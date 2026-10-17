@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Hollow</string>
+
+    <string name="slot_weather">Weather</string>
+    <string name="slot_date">Date</string>
+</resources>

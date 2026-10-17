@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.burnilab.hollowwatchface">
+
+    <uses-feature android:name="android.hardware.type.watch" />
+
+    <application
+        android:allowBackup="true"
+        android:hasCode="false"
+        android:label="@string/app_name">
+
+        <!-- Watch Face Format runtime version. 4 -- matches every sibling
+             in this family (RadixWatchFace etc); also required here since
+             WeightedStroke-under-Arc needs it (see app/build.gradle.kts). -->
+        <property
+            android:name="com.google.wear.watchface.format.version"
+            android:value="4" />
+
+        <meta-data
+            android:name="com.google.android.wearable.standalone"
+            android:value="true" />
+
+        <meta-data
+            android:name="com.google.android.wearable.watchface.preview"
+            android:resource="@drawable/preview" />
+    </application>
+</manifest>

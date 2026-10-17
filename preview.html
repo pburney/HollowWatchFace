@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Hollow preview</title>
+<style>
+  body { background: #11131a; color: #ddd; font-family: sans-serif; text-align: center; }
+  canvas { background: #0A0E1A; border-radius: 50%; margin-top: 1rem; }
+</style>
+</head>
+<body>
+<h2>Hollow</h2>
+<canvas id="c" width="450" height="450"></canvas>
+<p id="readout"></p>
+<script>
+function value(src, now) {
+  const H = now.getHours(), M = now.getMinutes(), S = now.getSeconds();
+  src = src.replaceAll("[HOUR_0_23]", H).replaceAll("[MINUTE]", M).replaceAll("[SECOND]", S);
+  src = src.replace(/floor\(([^()]+)\)/g, (_, e) => "Math.floor(" + e + ")");
+  return Function('"use strict";return (' + src + ')')();
+}
+function moonPhaseIndex(now) {
+  // Standard synodic-month approximation (known new moon reference:
+  // 2000-01-06 18:14 UTC), bucketed into the same 8 phases as
+  // [MOON_PHASE_TYPE] on-device. Only used for the live browser preview --
+  // the watch face itself reads the native WFF data source.
+  const synodic = 29.530588853;
+  const known = Date.UTC(2000, 0, 6, 18, 14, 0);
+  const days = (now.getTime() - known) / 86400000;
+  const phase = ((days % synodic) + synodic) % synodic / synodic;
+  return Math.floor(phase * 8) % 8;
+}
+
+const STONES = [
+    {x: 57, expr: "floor([HOUR_0_23] / 10)"},
+    {x: 141, expr: "floor([HOUR_0_23] % 10)"},
+    {x: 237, expr: "floor([MINUTE] / 10)"},
+    {x: 321, expr: "floor([MINUTE] % 10)"}
+];
+const GHOSTS = [
+    {x: 93, y: 146, size: 44},
+    {x: 177, y: 143, size: 38},
+    {x: 273, y: 149, size: 50},
+    {x: 357, y: 144, size: 40},
+    {x: 135, y: 147, size: 46},
+    {x: 315, y: 148, size: 48}
+];
+const STARS = [
+    [135.0, 26.3, 2.59],
+    [218.6, 36.2, 3.09],
+    [233.8, 29.5, 2.40],
+    [155.2, 18.9, 3.07],
+    [230.3, 29.4, 1.56],
+    [310.7, 18.6, 1.97],
+    [204.3, 29.8, 2.68],
+    [21.8, 41.4, 2.84],
+    [247.6, 35.9, 1.98],
+    [415.8, 306.5, 1.59],
+    [412.8, 228.7, 1.79],
+    [22.4, 323.5, 2.35],
+    [413.3, 138.9, 2.20],
+    [409.8, 306.2, 2.75],
+    [20.6, 196.6, 2.43],
+    [47.0, 150.3, 1.40],
+    [403.0, 324.4, 1.29],
+    [269.4, 371.5, 2.37],
+    [57.6, 333.3, 1.86],
+    [67.8, 338.0, 2.03],
+    [228.7, 335.0, 2.11]
+];
+const MOON_NAMES = ['new', 'waxcres', 'firstq', 'waxgibb', 'full', 'wangibb', 'lastq', 'wancres'];
+
+const ctx = document.getElementById('c').getContext('2d');
+
+function draw(now) {
+  const H = now.getHours(), M = now.getMinutes();
+  ctx.clearRect(0, 0, 450, 450);
+  ctx.fillStyle = "#0A0E1A";
+  ctx.fillRect(0, 0, 450, 450);
+
+  ctx.fillStyle = "#E8E6D8";
+  for (const [x, y, r] of STARS) {
+    ctx.beginPath(); ctx.arc(x, y, r, 0, 2 * Math.PI); ctx.fill();
+  }
+
+  for (const s of STONES) {
+    ctx.fillStyle = "#888C96";
+    ctx.fillRect(s.x, 150, 72, 160);
+    ctx.strokeStyle = "#4A4D57"; ctx.lineWidth = 3;
+    ctx.strokeRect(s.x, 150, 72, 160);
+    const segW = 72 / 5;
+    ctx.fillStyle = "#0A0E1A";
+    for (const i of [1, 3]) {
+      ctx.fillRect(s.x + segW * i, 150, segW, 16);
+    }
+    ctx.fillStyle = "#1C1A22";
+    ctx.font = "bold 56px sans-serif";
+    ctx.textAlign = "center"; ctx.textBaseline = "middle";
+    const v = Math.floor(value(s.expr, now));
+    ctx.fillText(String(v), s.x + 72 / 2, 150 + 160 / 2);
+  }
+
+  // ghost: minute-keyed, simple drawn silhouette (placement mirrors the
+  // real asset's baked positions; shape is a quick canvas approximation,
+  // not pixel-identical to the rasterized PNG -- fine for a layout check)
+  const gi = Math.floor(M % 6);
+  const g = GHOSTS[gi];
+  ctx.fillStyle = "rgba(242,242,248,0.9)";
+  ctx.beginPath();
+  ctx.arc(g.x, g.y - g.size * 0.15, g.size * 0.3, Math.PI, 0);
+  ctx.lineTo(g.x + g.size * 0.3, g.y + g.size * 0.3);
+  ctx.lineTo(g.x, g.y + g.size * 0.2);
+  ctx.lineTo(g.x - g.size * 0.3, g.y + g.size * 0.3);
+  ctx.closePath(); ctx.fill();
+  ctx.fillStyle = "#282038";
+  ctx.beginPath(); ctx.arc(g.x - g.size * 0.1, g.y - g.size * 0.15, g.size * 0.035, 0, 2 * Math.PI); ctx.fill();
+  ctx.beginPath(); ctx.arc(g.x + g.size * 0.1, g.y - g.size * 0.15, g.size * 0.035, 0, 2 * Math.PI); ctx.fill();
+
+  // moon + weather panels
+  ctx.fillStyle = "#14192A";
+  ctx.fillRect(98, 48, 120, 68);
+  ctx.fillRect(232, 48, 120, 68);
+  const mi = moonPhaseIndex(now);
+  ctx.fillStyle = "#ede6d6";
+  ctx.beginPath();
+  ctx.arc(98 + 120 / 2, 48 + 68 / 2, 18, 0, 2 * Math.PI);
+  ctx.fill();
+  ctx.fillStyle = "#999"; ctx.font = "10px sans-serif";
+  ctx.fillText(MOON_NAMES[mi], 98 + 120 / 2, 48 + 68 - 8);
+  ctx.fillStyle = "#9ab"; ctx.font = "26px sans-serif";
+  ctx.fillText("\u2601", 232 + 120 / 2, 48 + 68 / 2 - 4);
+  ctx.font = "10px sans-serif"; ctx.fillStyle = "#999";
+  ctx.fillText("(mock -- real device shows your weather provider)", 232 + 120 / 2, 48 + 68 - 6);
+
+  document.getElementById('readout').textContent =
+    now.toTimeString().slice(0, 8) + "  ghost#" + gi + "  moon:" + MOON_NAMES[mi];
+}
+
+function tick() { draw(window.__now ? window.__now() : new Date()); }
+tick();
+setInterval(tick, 1000);
+</script>
+</body>
+</html>
