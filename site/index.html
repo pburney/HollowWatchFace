@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hollow Watch Face</title>
+<meta name="description" content="A graveyard-at-night Wear OS watch face — stone pillars, rising ghosts, moon phase, and a user-configurable night sky. Try it live, no watch required.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --bg: #eef0ea;
+    --surface: #ffffff;
+    --ink: #1b1e22;
+    --muted: #5c6470;
+    --border: #d6dad2;
+    --accent: #6b5a9c;
+    --accent-ink: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #14171c;
+      --surface: #1c2028;
+      --ink: #e8e6df;
+      --muted: #8b93a0;
+      --border: #2a2f38;
+      --accent: #a594d6;
+      --accent-ink: #14171c;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #14171c;
+    --surface: #1c2028;
+    --ink: #e8e6df;
+    --muted: #8b93a0;
+    --border: #2a2f38;
+    --accent: #a594d6;
+    --accent-ink: #14171c;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font: 15px/1.5 "Work Sans", system-ui, sans-serif;
+    padding-inline: 16px;
+    padding-block: 28px 40px;
+    max-width: 620px;
+    margin: 0 auto;
+  }
+  h1 {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 650;
+    font-optical-sizing: auto;
+    font-size: clamp(2rem, 7vw, 2.6rem);
+    letter-spacing: -0.01em;
+    margin: 0 0 4px;
+    text-wrap: balance;
+  }
+  .tagline { color: var(--muted); margin: 0 0 24px; max-width: 46ch; }
+  .tagline b { color: var(--ink); font-weight: 600; }
+
+  .stage {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+  #face {
+    width: min(100%, 340px);
+    aspect-ratio: 1;
+    display: block;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 0 1px var(--border), 0 8px 28px #0003;
+  }
+
+  .readout {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 13px;
+    color: var(--muted);
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+  }
+  .readout b { color: var(--accent); font-weight: 600; }
+
+  .panel {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  @media (max-width: 420px) { .panel { grid-template-columns: 1fr; } }
+
+  .field {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .field label.name {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+  }
+  select {
+    font: 500 14px "Work Sans", sans-serif;
+    color: var(--ink);
+    background: transparent;
+    border: none;
+    padding: 2px 0;
+  }
+  select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+
+  footer {
+    margin-top: 28px;
+    font-size: 12.5px;
+    color: var(--muted);
+    text-align: center;
+  }
+  footer a { color: var(--accent); }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+
+  .fs-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font: 500 13px "Work Sans", sans-serif;
+    color: var(--ink);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 8px 16px;
+    cursor: pointer;
+  }
+  .fs-btn:hover { border-color: var(--accent); }
+  .fs-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .fs-btn svg { width: 15px; height: 15px; flex: none; }
+
+  body.is-fullscreen h1,
+  body.is-fullscreen .tagline,
+  body.is-fullscreen .panel,
+  body.is-fullscreen footer {
+    display: none;
+  }
+  body.is-fullscreen {
+    max-width: none;
+    padding: 0;
+    height: 100vh;
+  }
+  body.is-fullscreen .stage {
+    height: 100%;
+    justify-content: center;
+    border: none;
+    border-radius: 0;
+    background: var(--bg);
+  }
+  body.is-fullscreen #face {
+    width: min(88vh, 88vw);
+  }
+</style>
+</head>
+<body>
+
+<h1>Hollow</h1>
+<p class="tagline">A graveyard-at-night Wear OS watch face: the time sits carved into four
+  stone tombstones, ghosts rise out of the stones on a staggered cycle, a moon-phase
+  icon reads the real lunar phase, and the night sky's color is yours to pick. This is a
+  live preview reading the actual time — no watch required.</p>
+
+<div class="stage">
+  <canvas id="face" width="450" height="450"></canvas>
+  <div class="readout" id="readout"></div>
+  <button class="fs-btn" id="fsBtn" type="button">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M21 16v3a2 2 0 0 1-2 2h-3M3 16v3a2 2 0 0 0 2 2h3"/>
+    </svg>
+    <span id="fsBtnLabel">Fullscreen</span>
+  </button>
+</div>
+
+<div class="panel">
+  <div class="field">
+    <label class="name" for="bg">Night color</label>
+    <select id="bg"></select>
+  </div>
+  <div class="field">
+    <label class="name" for="bgGradient">Night gradient</label>
+    <select id="bgGradient"></select>
+  </div>
+</div>
+
+<footer>Open source (Apache-2.0) —
+  <a href="https://github.com/pburney/HollowWatchFace">view the source on GitHub</a>.
+  Not a numeral-base face like <a href="https://github.com/pburney/RadixWatchFace">Radix</a> —
+  a standalone graveyard theme of its own. Weather and the middle complication slots
+  are real Wear OS complications on-device (shown here as placeholders, since a
+  browser has no complication provider to ask). Built with Claude Code.</footer>
+
+<script>
+// ---- rendering, ported verbatim from HollowWatchFace/preview.html ----
+function value(src, now) {
+  const H = now.getHours(), M = now.getMinutes(), S = now.getSeconds();
+  src = src.replaceAll("[HOUR_0_23]", H).replaceAll("[MINUTE]", M).replaceAll("[SECOND]", S);
+  src = src.replace(/floor\(([^()]+)\)/g, (_, e) => "Math.floor(" + e + ")");
+  return Function('"use strict";return (' + src + ')')();
+}
+function moonPhaseIndex(now) {
+  // Standard synodic-month approximation (known new moon reference:
+  // 2000-01-06 18:14 UTC), bucketed into the same 8 phases as
+  // [MOON_PHASE_TYPE] on-device. Only used for this browser demo -- the
+  // watch face itself reads the native WFF data source.
+  const synodic = 29.530588853;
+  const known = Date.UTC(2000, 0, 6, 18, 14, 0);
+  const days = (now.getTime() - known) / 86400000;
+  const phase = ((days % synodic) + synodic) % synodic / synodic;
+  return Math.floor(phase * 8) % 8;
+}
+
+const STONES = [
+    {x: 57, expr: "floor([HOUR_0_23] / 10)"},
+    {x: 141, expr: "floor([HOUR_0_23] % 10)"},
+    {x: 237, expr: "floor([MINUTE] / 10)"},
+    {x: 321, expr: "floor([MINUTE] % 10)"}
+];
+const HOUR_BUCKETS = 4;
+const GHOST_SLOTS = [
+    {x: 93.0, startSecond: 1},
+    {x: 177.0, startSecond: 16},
+    {x: 273.0, startSecond: 31},
+    {x: 357.0, startSecond: 46}
+];
+const GHOST_IDENTITIES = [
+    {size: 88, startY: 243.0, exitDx: 30, wobbleAmp: 0.35, wobbleCycles: 2.5},
+    {size: 76, startY: 246.0, exitDx: -20, wobbleAmp: 0.3, wobbleCycles: 3.0},
+    {size: 82, startY: 244.5, exitDx: 15, wobbleAmp: 0.4, wobbleCycles: 2.0},
+    {size: 80, startY: 245.0, exitDx: -35, wobbleAmp: 0.28, wobbleCycles: 3.5}
+];
+const STARS = [
+    [134.1, 118.5, 2.36], [218.6, 201.6, 2.88], [233.9, 145.9, 2.15], [154.5, 57.3, 2.86],
+    [230.4, 144.7, 1.26], [311.5, 54.3, 1.70], [204.1, 148.2, 2.45], [19.8, 244.6, 2.62],
+    [247.8, 198.9, 1.71], [228.6, 131.8, 2.94], [335.8, 72.3, 1.71], [184.0, 91.1, 1.67],
+    [47.2, 197.2, 2.19], [366.3, 184.8, 2.87], [190.5, 104.4, 1.65], [139.8, 53.1, 2.87],
+    [194.8, 174.5, 1.98], [81.4, 113.9, 1.65], [335.7, 228.3, 2.96], [70.8, 195.7, 1.83],
+    [159.4, 168.2, 2.71], [42.0, 161.1, 2.85], [420.0, 27.2, 1.24], [246.0, 33.6, 1.44],
+    [303.2, 135.3, 1.31], [330.7, 219.2, 1.66], [225.6, 225.4, 2.77], [277.1, 65.5, 1.12],
+    [387.6, 134.7, 2.87], [208.5, 70.2, 1.76], [169.5, 108.7, 1.93], [213.8, 112.3, 2.23],
+    [292.9, 19.3, 2.04], [111.1, 49.1, 2.16]
+];
+const STONE_PIECES = [
+    [26.13, 0.00, 19.74, 2.00, "#888C96"], [25.72, 2.00, 20.57, 2.00, "#888C96"],
+    [24.87, 4.00, 22.26, 2.00, "#888C96"], [23.54, 6.00, 24.91, 2.00, "#888C96"],
+    [21.65, 8.00, 28.71, 2.00, "#888C96"], [19.01, 10.00, 33.97, 2.00, "#888C96"],
+    [15.26, 12.00, 41.47, 2.00, "#888C96"], [9.11, 14.00, 50.89, 2.00, "#888C96"],
+    [60.00, 14.00, 2.89, 2.00, "#3A3C41"], [0.00, 16.00, 6.00, 64.00, "#B9BBC1"],
+    [6.00, 16.00, 54.00, 64.00, "#888C96"], [60.00, 16.00, 6.00, 64.00, "#3A3C41"],
+    [66.00, 16.00, 6.00, 64.00, "#5E6169"]
+];
+const MOON_NAMES = ['new', 'waxcres', 'firstq', 'waxgibb', 'full', 'wangibb', 'lastq', 'wancres'];
+const BG_OPTIONS = [
+    {n: "Red", c: "#503030", rot: 0}, {n: "Dark Red", c: "#291919", rot: 0}, {n: "Orange", c: "#504030", rot: 1}, {n: "Dark Orange", c: "#292119", rot: 1}, {n: "Yellow", c: "#505030", rot: 2}, {n: "Dark Yellow", c: "#292919", rot: 2}, {n: "Green", c: "#305030", rot: 3}, {n: "Dark Green", c: "#192919", rot: 3}, {n: "Blue", c: "#303050", rot: 4}, {n: "Dark Blue", c: "#191929", rot: 4}, {n: "Indigo", c: "#423050", rot: 5}, {n: "Dark Indigo", c: "#231929", rot: 5}, {n: "Violet", c: "#503050", rot: 6}, {n: "Dark Violet", c: "#291929", rot: 6}, {n: "Brown", c: "#503D30", rot: 0}, {n: "Dark Brown", c: "#292019", rot: 0}, {n: "Grey", c: "#262626", rot: 0}, {n: "Grey Dark", c: "#060606", rot: 0}, {n: "Midnight", c: "#000000", rot: 0}
+];
+const RAINBOW_WHEEL = ["#291919", "#292119", "#292919", "#192919", "#191929", "#231929", "#931BBB"];
+const BG_GRADIENT_OPTIONS = [
+    {n: "None", colors: null, positions: null},
+    {n: "Gradient", colors: "DYNAMIC", positions: [0.0, 1.0]},
+    {n: "Dark Rainbow", colors: "DYNAMIC_RAINBOW", positions: [0.0, 0.09481481481481481, 0.18962962962962962, 0.28444444444444444, 0.37925925925925924, 0.4740740740740741, 0.5688888888888889, 1.0]}
+];
+
+const canvas = document.getElementById('face');
+const ctx = canvas.getContext('2d');
+// Crisp rendering at any display scale/fullscreen size -- backing store
+// sized by devicePixelRatio, all drawing code below stays in the original
+// 450x450 logical coordinate space via one ctx.scale() call.
+const LOGICAL = 450;
+function fitCanvas() {
+  const dpr = window.devicePixelRatio || 1;
+  canvas.width = LOGICAL * dpr;
+  canvas.height = LOGICAL * dpr;
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+fitCanvas();
+window.addEventListener('resize', fitCanvas);
+
+const bgSel = document.getElementById('bg');
+BG_OPTIONS.forEach((opt, i) => {
+  const el = document.createElement('option');
+  el.value = i; el.textContent = opt.n;
+  bgSel.appendChild(el);
+});
+bgSel.value = 11;
+bgSel.addEventListener('change', () => draw(new Date()));
+
+const bgGradSel = document.getElementById('bgGradient');
+BG_GRADIENT_OPTIONS.forEach((opt, i) => {
+  const el = document.createElement('option');
+  el.value = i; el.textContent = opt.n;
+  bgGradSel.appendChild(el);
+});
+bgGradSel.value = 0;
+bgGradSel.addEventListener('change', () => draw(new Date()));
+
+function ghostPos(slot, identity, sec) {
+  const step = ((sec - slot.startSecond) % 60 + 60) % 60;
+  if (step >= 15) return null;
+  const t = step / (15 - 1);
+  const endY = -(identity.size + 10);
+  const y = identity.startY + t * (endY - identity.startY);
+  const wobble = identity.size * identity.wobbleAmp * Math.sin(t * identity.wobbleCycles * 2 * Math.PI);
+  const x = slot.x + t * identity.exitDx + wobble;
+  return { x, y, size: identity.size };
+}
+
+function draw(now) {
+  const H = now.getHours(), M = now.getMinutes(), S = now.getSeconds();
+  const gradOpt = BG_GRADIENT_OPTIONS[bgGradSel.value];
+  let bg;
+  if (gradOpt.colors === "DYNAMIC") {
+    const grad = ctx.createLinearGradient(225.0, 0, 225.0, 450);
+    grad.addColorStop(gradOpt.positions[0], BG_OPTIONS[bgSel.value].c);
+    grad.addColorStop(gradOpt.positions[1], "#000000");
+    bg = grad;
+  } else if (gradOpt.colors === "DYNAMIC_RAINBOW") {
+    const grad = ctx.createLinearGradient(225.0, 0, 225.0, 450);
+    const rot = BG_OPTIONS[bgSel.value].rot;
+    const rotated = RAINBOW_WHEEL.slice(rot).concat(RAINBOW_WHEEL.slice(0, rot));
+    const tail = rotated.slice(1).concat([rotated[rotated.length - 1]]);
+    grad.addColorStop(gradOpt.positions[0], BG_OPTIONS[bgSel.value].c);
+    tail.forEach((c, i) => grad.addColorStop(gradOpt.positions[i + 1], c));
+    bg = grad;
+  } else if (gradOpt.colors) {
+    const grad = ctx.createLinearGradient(225.0, 0, 225.0, 450);
+    gradOpt.colors.forEach((c, i) => grad.addColorStop(gradOpt.positions[i], c));
+    bg = grad;
+  } else {
+    bg = BG_OPTIONS[bgSel.value].c;
+  }
+  ctx.clearRect(0, 0, 450, 450);
+  ctx.fillStyle = bg;
+  ctx.fillRect(0, 0, 450, 450);
+
+  ctx.fillStyle = "#E8E6D8";
+  for (const [x, y, r] of STARS) {
+    ctx.beginPath(); ctx.arc(x, y, r, 0, 2 * Math.PI); ctx.fill();
+  }
+
+  ctx.fillStyle = "#000000";
+  ctx.fillRect(0, 320, 450, 130);
+
+  for (const s of STONES) {
+    for (const [dx, dy, w, h, color] of STONE_PIECES) {
+      ctx.fillStyle = color;
+      ctx.fillRect(s.x + dx, 265 + dy, w, h);
+    }
+    ctx.fillStyle = "#2A2C30";
+    ctx.font = "bold 44px serif";
+    ctx.textAlign = "center"; ctx.textBaseline = "middle";
+    const v = Math.floor(value(s.expr, now));
+    ctx.fillText(String(v), s.x + 72 / 2, 283 + 52 / 2);
+  }
+
+  const hourBucket = H % HOUR_BUCKETS;
+  let activeCount = 0;
+  for (let s = 0; s < GHOST_SLOTS.length; s++) {
+    const g0 = GHOST_IDENTITIES[(s + hourBucket) % HOUR_BUCKETS];
+    const g = ghostPos(GHOST_SLOTS[s], g0, S);
+    if (!g) continue;
+    activeCount++;
+    ctx.fillStyle = "rgba(242,242,248,0.9)";
+    ctx.beginPath();
+    ctx.arc(g.x, g.y - g.size * 0.15, g.size * 0.3, Math.PI, 0);
+    ctx.lineTo(g.x + g.size * 0.3, g.y + g.size * 0.3);
+    ctx.lineTo(g.x, g.y + g.size * 0.2);
+    ctx.lineTo(g.x - g.size * 0.3, g.y + g.size * 0.3);
+    ctx.closePath(); ctx.fill();
+    ctx.fillStyle = "#282038";
+    ctx.beginPath(); ctx.arc(g.x - g.size * 0.1, g.y - g.size * 0.15, g.size * 0.05, 0, 2 * Math.PI); ctx.fill();
+    ctx.beginPath(); ctx.arc(g.x + g.size * 0.1, g.y - g.size * 0.15, g.size * 0.05, 0, 2 * Math.PI); ctx.fill();
+  }
+
+  const mi = moonPhaseIndex(now);
+  ctx.fillStyle = "#ede6d6";
+  ctx.beginPath();
+  ctx.arc(98 + 120 / 2, 48 + 68 / 2, 18, 0, 2 * Math.PI);
+  ctx.fill();
+  ctx.fillStyle = "#999"; ctx.font = "10px sans-serif";
+  ctx.fillText(MOON_NAMES[mi], 98 + 120 / 2, 48 + 68 - 8);
+  ctx.fillStyle = "#9ab"; ctx.font = "26px sans-serif";
+  ctx.fillText("☁", 232 + 120 / 2, 48 + 68 / 2 - 4);
+  ctx.font = "10px sans-serif"; ctx.fillStyle = "#999";
+  ctx.fillText("your weather provider", 232 + 120 / 2, 48 + 68 - 6);
+
+  const MID_X = [25, 165, 305];
+  ctx.font = "10px sans-serif";
+  MID_X.forEach((mx, i) => {
+    ctx.strokeStyle = "rgba(128,128,128,0.6)";
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.roundRect(mx, 156, 120, 68, 12);
+    ctx.stroke();
+    ctx.fillStyle = "#888";
+    ctx.textAlign = "center";
+    ctx.fillText("complication " + (i + 1), mx + 120 / 2, 156 + 68 / 2);
+  });
+
+  document.getElementById('readout').innerHTML =
+    now.toTimeString().slice(0, 8) + "  &nbsp;·&nbsp;  moon: <b>" + MOON_NAMES[mi] + "</b>" +
+    (activeCount ? "  &nbsp;·&nbsp;  <b>" + activeCount + "</b> ghost" + (activeCount === 1 ? "" : "s") + " rising" : "  &nbsp;·&nbsp;  no ghosts rising right now");
+}
+
+function tick() { draw(new Date()); }
+tick();
+setInterval(tick, 1000);
+
+const fsBtn = document.getElementById("fsBtn");
+const fsBtnLabel = document.getElementById("fsBtnLabel");
+fsBtn.addEventListener("click", () => {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen().catch(() => {});
+  } else {
+    document.exitFullscreen().catch(() => {});
+  }
+});
+document.addEventListener("fullscreenchange", () => {
+  const active = !!document.fullscreenElement;
+  document.body.classList.toggle("is-fullscreen", active);
+  fsBtnLabel.textContent = active ? "Exit fullscreen" : "Fullscreen";
+  fitCanvas();
+});
+</script>
+</body>
+</html>
