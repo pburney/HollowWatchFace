@@ -16,11 +16,24 @@ directly.
 ## What's on the face
 
 - **Four stone pillars** show HH:MM — plain carved-ink numerals on a
-  crenellated (castle-merlon) silhouette, not a custom digit font; the
+  crenellated (castle-merlon) silhouette, shoulders rounded off with a
+  true quarter-circle curve, edge-lit with highlight/shadow bands as if
+  lit from the moon's position (top-left). Not a custom digit font; the
   stone shape carries the theme, the ink carries the digit.
-- **Ghosts** — six hand-drawn poses, one keyed to `[MINUTE] % 6`, each
-  floating up out of a specific stone. Changes every minute; no two
-  adjacent minutes repeat.
+- **Ghosts** rise one at a time out of each stone, staggered so exactly
+  one is always mid-rise through the full minute (four 15-second windows
+  tiling :01-:60 with no gaps or overlap). Each has its own hand-tuned
+  size, face, and curved flight path with a real side-to-side wobble as
+  it climbs — and **which ghost rises from which stone rotates every
+  hour** (`[HOUR_0_23] % 4`), so the pairing keeps changing without
+  repeating the same four forever. WFF has no native random source, so
+  this is deterministic-but-varying rather than truly random.
+- **Night sky color is user-configurable** — a 19-option ROYGBIV + brown/
+  grey/midnight palette, picked from the watch face editor. Pick a hue and
+  the sky's gradient (if enabled) rotates its whole rainbow to start from
+  that color (e.g. picking Blue gives you Blue-Indigo-Violet-Red-Orange-
+  Yellow-Green). Three gradient styles: flat color, a fade to black, or a
+  full rotating rainbow sweep.
 - **Moon phase** (top-left) reads WFF's native `[MOON_PHASE_TYPE]` data
   source directly — no complication, no setup, it just works.
 - **Weather** (top-right) is a real Wear OS complication — assign a
@@ -28,9 +41,11 @@ directly.
   as any other complication. Unlike moon phase, WFF has no built-in weather
   data source (confirmed against the schema, not assumed), so this is the
   only correct way to show it.
+- **Three open complication slots** in the middle lane, between the top
+  widgets and the stones — assign whatever you like.
 - **Date** (bottom) — the same `DAY_AND_DATE` system-provider complication
   every sibling in this family uses.
-- A scattered **star field** over a deep night-blue sky.
+- A scattered **star field** over the night sky.
 
 ## How it works
 

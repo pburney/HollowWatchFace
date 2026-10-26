@@ -4,181 +4,3140 @@
   <Metadata key="CLOCK_TYPE" value="DIGITAL"/>
   <Metadata key="PREVIEW_TIME" value="22:17:00"/>
 
+  <UserConfigurations>
+    <ListConfiguration id="bgColor" displayName="cfg_bgcolor" defaultValue="dark_indigo">
+      <ListOption id="red" displayName="color_red"/>
+      <ListOption id="dark_red" displayName="color_dark_red"/>
+      <ListOption id="orange" displayName="color_orange"/>
+      <ListOption id="dark_orange" displayName="color_dark_orange"/>
+      <ListOption id="yellow" displayName="color_yellow"/>
+      <ListOption id="dark_yellow" displayName="color_dark_yellow"/>
+      <ListOption id="green" displayName="color_green"/>
+      <ListOption id="dark_green" displayName="color_dark_green"/>
+      <ListOption id="blue" displayName="color_blue"/>
+      <ListOption id="dark_blue" displayName="color_dark_blue"/>
+      <ListOption id="indigo" displayName="color_indigo"/>
+      <ListOption id="dark_indigo" displayName="color_dark_indigo"/>
+      <ListOption id="violet" displayName="color_violet"/>
+      <ListOption id="dark_violet" displayName="color_dark_violet"/>
+      <ListOption id="brown" displayName="color_brown"/>
+      <ListOption id="dark_brown" displayName="color_dark_brown"/>
+      <ListOption id="grey" displayName="color_grey"/>
+      <ListOption id="grey_dark" displayName="color_grey_dark"/>
+      <ListOption id="midnight" displayName="color_midnight"/>
+    </ListConfiguration>
+    <ListConfiguration id="bgGradient" displayName="cfg_bggradient" defaultValue="none">
+      <ListOption id="none" displayName="bggradient_none"/>
+      <ListOption id="gradient" displayName="bggradient_gradient"/>
+      <ListOption id="dark_rainbow" displayName="bggradient_dark_rainbow"/>
+    </ListConfiguration>
+  </UserConfigurations>
+
   <Scene>
+    <!-- Background fill: a Scene-level ListConfiguration switch, outer on
+         bgColor (one branch per swatch) with bgGradient (none/gradient/
+         dark_rainbow) nested inside each; see build_bg_switch's
+         docstring for why bgColor had to become the outer switch. Placed
+         first so it still paints first. -->
+    <ListConfiguration id="bgColor">
+      <ListOption id="red">
+        <Group name="bg_red_switch" x="0" y="0" width="450" height="450">
+          <ListConfiguration id="bgGradient">
+            <ListOption id="none">
+          <Group name="bg_red_none" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF503030"/></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+            <ListOption id="gradient">
+          <Group name="bg_red_gradient" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF503030"/></Rectangle>
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF000000"><LinearGradient startX="225.0" startY="0" endX="225.0" endY="450" colors="#00000000 #FF000000" positions="0.00 1.00"/></Fill></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+            <ListOption id="dark_rainbow">
+          <Group name="bg_red_dark_rainbow" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF503030"/></Rectangle>
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF931BBB"><LinearGradient startX="225.0" startY="0" endX="225.0" endY="450" colors="#00000000 #FF292119 #FF292919 #FF192919 #FF191929 #FF231929 #FF931BBB #FF931BBB" positions="0.00 0.09 0.19 0.28 0.38 0.47 0.57 1.00"/></Fill></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+          </ListConfiguration>
+        </Group>
+      </ListOption>
+      <ListOption id="dark_red">
+        <Group name="bg_dark_red_switch" x="0" y="0" width="450" height="450">
+          <ListConfiguration id="bgGradient">
+            <ListOption id="none">
+          <Group name="bg_dark_red_none" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF291919"/></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+            <ListOption id="gradient">
+          <Group name="bg_dark_red_gradient" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF291919"/></Rectangle>
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF000000"><LinearGradient startX="225.0" startY="0" endX="225.0" endY="450" colors="#00000000 #FF000000" positions="0.00 1.00"/></Fill></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+            <ListOption id="dark_rainbow">
+          <Group name="bg_dark_red_dark_rainbow" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF291919"/></Rectangle>
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF931BBB"><LinearGradient startX="225.0" startY="0" endX="225.0" endY="450" colors="#00000000 #FF292119 #FF292919 #FF192919 #FF191929 #FF231929 #FF931BBB #FF931BBB" positions="0.00 0.09 0.19 0.28 0.38 0.47 0.57 1.00"/></Fill></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+          </ListConfiguration>
+        </Group>
+      </ListOption>
+      <ListOption id="orange">
+        <Group name="bg_orange_switch" x="0" y="0" width="450" height="450">
+          <ListConfiguration id="bgGradient">
+            <ListOption id="none">
+          <Group name="bg_orange_none" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF504030"/></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+            <ListOption id="gradient">
+          <Group name="bg_orange_gradient" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF504030"/></Rectangle>
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF000000"><LinearGradient startX="225.0" startY="0" endX="225.0" endY="450" colors="#00000000 #FF000000" positions="0.00 1.00"/></Fill></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+            <ListOption id="dark_rainbow">
+          <Group name="bg_orange_dark_rainbow" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF504030"/></Rectangle>
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF291919"><LinearGradient startX="225.0" startY="0" endX="225.0" endY="450" colors="#00000000 #FF292919 #FF192919 #FF191929 #FF231929 #FF931BBB #FF291919 #FF291919" positions="0.00 0.09 0.19 0.28 0.38 0.47 0.57 1.00"/></Fill></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+          </ListConfiguration>
+        </Group>
+      </ListOption>
+      <ListOption id="dark_orange">
+        <Group name="bg_dark_orange_switch" x="0" y="0" width="450" height="450">
+          <ListConfiguration id="bgGradient">
+            <ListOption id="none">
+          <Group name="bg_dark_orange_none" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF292119"/></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+            <ListOption id="gradient">
+          <Group name="bg_dark_orange_gradient" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF292119"/></Rectangle>
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF000000"><LinearGradient startX="225.0" startY="0" endX="225.0" endY="450" colors="#00000000 #FF000000" positions="0.00 1.00"/></Fill></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+            <ListOption id="dark_rainbow">
+          <Group name="bg_dark_orange_dark_rainbow" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF292119"/></Rectangle>
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF291919"><LinearGradient startX="225.0" startY="0" endX="225.0" endY="450" colors="#00000000 #FF292919 #FF192919 #FF191929 #FF231929 #FF931BBB #FF291919 #FF291919" positions="0.00 0.09 0.19 0.28 0.38 0.47 0.57 1.00"/></Fill></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+          </ListConfiguration>
+        </Group>
+      </ListOption>
+      <ListOption id="yellow">
+        <Group name="bg_yellow_switch" x="0" y="0" width="450" height="450">
+          <ListConfiguration id="bgGradient">
+            <ListOption id="none">
+          <Group name="bg_yellow_none" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF505030"/></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+            <ListOption id="gradient">
+          <Group name="bg_yellow_gradient" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF505030"/></Rectangle>
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF000000"><LinearGradient startX="225.0" startY="0" endX="225.0" endY="450" colors="#00000000 #FF000000" positions="0.00 1.00"/></Fill></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+            <ListOption id="dark_rainbow">
+          <Group name="bg_yellow_dark_rainbow" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF505030"/></Rectangle>
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF292119"><LinearGradient startX="225.0" startY="0" endX="225.0" endY="450" colors="#00000000 #FF192919 #FF191929 #FF231929 #FF931BBB #FF291919 #FF292119 #FF292119" positions="0.00 0.09 0.19 0.28 0.38 0.47 0.57 1.00"/></Fill></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+          </ListConfiguration>
+        </Group>
+      </ListOption>
+      <ListOption id="dark_yellow">
+        <Group name="bg_dark_yellow_switch" x="0" y="0" width="450" height="450">
+          <ListConfiguration id="bgGradient">
+            <ListOption id="none">
+          <Group name="bg_dark_yellow_none" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF292919"/></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+            <ListOption id="gradient">
+          <Group name="bg_dark_yellow_gradient" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF292919"/></Rectangle>
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF000000"><LinearGradient startX="225.0" startY="0" endX="225.0" endY="450" colors="#00000000 #FF000000" positions="0.00 1.00"/></Fill></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+            <ListOption id="dark_rainbow">
+          <Group name="bg_dark_yellow_dark_rainbow" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF292919"/></Rectangle>
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF292119"><LinearGradient startX="225.0" startY="0" endX="225.0" endY="450" colors="#00000000 #FF192919 #FF191929 #FF231929 #FF931BBB #FF291919 #FF292119 #FF292119" positions="0.00 0.09 0.19 0.28 0.38 0.47 0.57 1.00"/></Fill></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+          </ListConfiguration>
+        </Group>
+      </ListOption>
+      <ListOption id="green">
+        <Group name="bg_green_switch" x="0" y="0" width="450" height="450">
+          <ListConfiguration id="bgGradient">
+            <ListOption id="none">
+          <Group name="bg_green_none" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF305030"/></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+            <ListOption id="gradient">
+          <Group name="bg_green_gradient" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF305030"/></Rectangle>
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF000000"><LinearGradient startX="225.0" startY="0" endX="225.0" endY="450" colors="#00000000 #FF000000" positions="0.00 1.00"/></Fill></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+            <ListOption id="dark_rainbow">
+          <Group name="bg_green_dark_rainbow" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF305030"/></Rectangle>
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF292919"><LinearGradient startX="225.0" startY="0" endX="225.0" endY="450" colors="#00000000 #FF191929 #FF231929 #FF931BBB #FF291919 #FF292119 #FF292919 #FF292919" positions="0.00 0.09 0.19 0.28 0.38 0.47 0.57 1.00"/></Fill></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+          </ListConfiguration>
+        </Group>
+      </ListOption>
+      <ListOption id="dark_green">
+        <Group name="bg_dark_green_switch" x="0" y="0" width="450" height="450">
+          <ListConfiguration id="bgGradient">
+            <ListOption id="none">
+          <Group name="bg_dark_green_none" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF192919"/></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+            <ListOption id="gradient">
+          <Group name="bg_dark_green_gradient" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF192919"/></Rectangle>
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF000000"><LinearGradient startX="225.0" startY="0" endX="225.0" endY="450" colors="#00000000 #FF000000" positions="0.00 1.00"/></Fill></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+            <ListOption id="dark_rainbow">
+          <Group name="bg_dark_green_dark_rainbow" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF192919"/></Rectangle>
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF292919"><LinearGradient startX="225.0" startY="0" endX="225.0" endY="450" colors="#00000000 #FF191929 #FF231929 #FF931BBB #FF291919 #FF292119 #FF292919 #FF292919" positions="0.00 0.09 0.19 0.28 0.38 0.47 0.57 1.00"/></Fill></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+          </ListConfiguration>
+        </Group>
+      </ListOption>
+      <ListOption id="blue">
+        <Group name="bg_blue_switch" x="0" y="0" width="450" height="450">
+          <ListConfiguration id="bgGradient">
+            <ListOption id="none">
+          <Group name="bg_blue_none" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF303050"/></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+            <ListOption id="gradient">
+          <Group name="bg_blue_gradient" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF303050"/></Rectangle>
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF000000"><LinearGradient startX="225.0" startY="0" endX="225.0" endY="450" colors="#00000000 #FF000000" positions="0.00 1.00"/></Fill></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+            <ListOption id="dark_rainbow">
+          <Group name="bg_blue_dark_rainbow" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF303050"/></Rectangle>
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF192919"><LinearGradient startX="225.0" startY="0" endX="225.0" endY="450" colors="#00000000 #FF231929 #FF931BBB #FF291919 #FF292119 #FF292919 #FF192919 #FF192919" positions="0.00 0.09 0.19 0.28 0.38 0.47 0.57 1.00"/></Fill></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+          </ListConfiguration>
+        </Group>
+      </ListOption>
+      <ListOption id="dark_blue">
+        <Group name="bg_dark_blue_switch" x="0" y="0" width="450" height="450">
+          <ListConfiguration id="bgGradient">
+            <ListOption id="none">
+          <Group name="bg_dark_blue_none" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF191929"/></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+            <ListOption id="gradient">
+          <Group name="bg_dark_blue_gradient" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF191929"/></Rectangle>
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF000000"><LinearGradient startX="225.0" startY="0" endX="225.0" endY="450" colors="#00000000 #FF000000" positions="0.00 1.00"/></Fill></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+            <ListOption id="dark_rainbow">
+          <Group name="bg_dark_blue_dark_rainbow" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF191929"/></Rectangle>
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF192919"><LinearGradient startX="225.0" startY="0" endX="225.0" endY="450" colors="#00000000 #FF231929 #FF931BBB #FF291919 #FF292119 #FF292919 #FF192919 #FF192919" positions="0.00 0.09 0.19 0.28 0.38 0.47 0.57 1.00"/></Fill></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+          </ListConfiguration>
+        </Group>
+      </ListOption>
+      <ListOption id="indigo">
+        <Group name="bg_indigo_switch" x="0" y="0" width="450" height="450">
+          <ListConfiguration id="bgGradient">
+            <ListOption id="none">
+          <Group name="bg_indigo_none" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF423050"/></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+            <ListOption id="gradient">
+          <Group name="bg_indigo_gradient" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF423050"/></Rectangle>
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF000000"><LinearGradient startX="225.0" startY="0" endX="225.0" endY="450" colors="#00000000 #FF000000" positions="0.00 1.00"/></Fill></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+            <ListOption id="dark_rainbow">
+          <Group name="bg_indigo_dark_rainbow" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF423050"/></Rectangle>
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF191929"><LinearGradient startX="225.0" startY="0" endX="225.0" endY="450" colors="#00000000 #FF931BBB #FF291919 #FF292119 #FF292919 #FF192919 #FF191929 #FF191929" positions="0.00 0.09 0.19 0.28 0.38 0.47 0.57 1.00"/></Fill></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+          </ListConfiguration>
+        </Group>
+      </ListOption>
+      <ListOption id="dark_indigo">
+        <Group name="bg_dark_indigo_switch" x="0" y="0" width="450" height="450">
+          <ListConfiguration id="bgGradient">
+            <ListOption id="none">
+          <Group name="bg_dark_indigo_none" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF231929"/></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+            <ListOption id="gradient">
+          <Group name="bg_dark_indigo_gradient" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF231929"/></Rectangle>
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF000000"><LinearGradient startX="225.0" startY="0" endX="225.0" endY="450" colors="#00000000 #FF000000" positions="0.00 1.00"/></Fill></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+            <ListOption id="dark_rainbow">
+          <Group name="bg_dark_indigo_dark_rainbow" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF231929"/></Rectangle>
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF191929"><LinearGradient startX="225.0" startY="0" endX="225.0" endY="450" colors="#00000000 #FF931BBB #FF291919 #FF292119 #FF292919 #FF192919 #FF191929 #FF191929" positions="0.00 0.09 0.19 0.28 0.38 0.47 0.57 1.00"/></Fill></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+          </ListConfiguration>
+        </Group>
+      </ListOption>
+      <ListOption id="violet">
+        <Group name="bg_violet_switch" x="0" y="0" width="450" height="450">
+          <ListConfiguration id="bgGradient">
+            <ListOption id="none">
+          <Group name="bg_violet_none" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF503050"/></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+            <ListOption id="gradient">
+          <Group name="bg_violet_gradient" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF503050"/></Rectangle>
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF000000"><LinearGradient startX="225.0" startY="0" endX="225.0" endY="450" colors="#00000000 #FF000000" positions="0.00 1.00"/></Fill></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+            <ListOption id="dark_rainbow">
+          <Group name="bg_violet_dark_rainbow" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF503050"/></Rectangle>
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF231929"><LinearGradient startX="225.0" startY="0" endX="225.0" endY="450" colors="#00000000 #FF291919 #FF292119 #FF292919 #FF192919 #FF191929 #FF231929 #FF231929" positions="0.00 0.09 0.19 0.28 0.38 0.47 0.57 1.00"/></Fill></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+          </ListConfiguration>
+        </Group>
+      </ListOption>
+      <ListOption id="dark_violet">
+        <Group name="bg_dark_violet_switch" x="0" y="0" width="450" height="450">
+          <ListConfiguration id="bgGradient">
+            <ListOption id="none">
+          <Group name="bg_dark_violet_none" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF291929"/></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+            <ListOption id="gradient">
+          <Group name="bg_dark_violet_gradient" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF291929"/></Rectangle>
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF000000"><LinearGradient startX="225.0" startY="0" endX="225.0" endY="450" colors="#00000000 #FF000000" positions="0.00 1.00"/></Fill></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+            <ListOption id="dark_rainbow">
+          <Group name="bg_dark_violet_dark_rainbow" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF291929"/></Rectangle>
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF231929"><LinearGradient startX="225.0" startY="0" endX="225.0" endY="450" colors="#00000000 #FF291919 #FF292119 #FF292919 #FF192919 #FF191929 #FF231929 #FF231929" positions="0.00 0.09 0.19 0.28 0.38 0.47 0.57 1.00"/></Fill></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+          </ListConfiguration>
+        </Group>
+      </ListOption>
+      <ListOption id="brown">
+        <Group name="bg_brown_switch" x="0" y="0" width="450" height="450">
+          <ListConfiguration id="bgGradient">
+            <ListOption id="none">
+          <Group name="bg_brown_none" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF503D30"/></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+            <ListOption id="gradient">
+          <Group name="bg_brown_gradient" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF503D30"/></Rectangle>
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF000000"><LinearGradient startX="225.0" startY="0" endX="225.0" endY="450" colors="#00000000 #FF000000" positions="0.00 1.00"/></Fill></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+            <ListOption id="dark_rainbow">
+          <Group name="bg_brown_dark_rainbow" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF503D30"/></Rectangle>
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF931BBB"><LinearGradient startX="225.0" startY="0" endX="225.0" endY="450" colors="#00000000 #FF292119 #FF292919 #FF192919 #FF191929 #FF231929 #FF931BBB #FF931BBB" positions="0.00 0.09 0.19 0.28 0.38 0.47 0.57 1.00"/></Fill></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+          </ListConfiguration>
+        </Group>
+      </ListOption>
+      <ListOption id="dark_brown">
+        <Group name="bg_dark_brown_switch" x="0" y="0" width="450" height="450">
+          <ListConfiguration id="bgGradient">
+            <ListOption id="none">
+          <Group name="bg_dark_brown_none" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF292019"/></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+            <ListOption id="gradient">
+          <Group name="bg_dark_brown_gradient" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF292019"/></Rectangle>
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF000000"><LinearGradient startX="225.0" startY="0" endX="225.0" endY="450" colors="#00000000 #FF000000" positions="0.00 1.00"/></Fill></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+            <ListOption id="dark_rainbow">
+          <Group name="bg_dark_brown_dark_rainbow" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF292019"/></Rectangle>
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF931BBB"><LinearGradient startX="225.0" startY="0" endX="225.0" endY="450" colors="#00000000 #FF292119 #FF292919 #FF192919 #FF191929 #FF231929 #FF931BBB #FF931BBB" positions="0.00 0.09 0.19 0.28 0.38 0.47 0.57 1.00"/></Fill></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+          </ListConfiguration>
+        </Group>
+      </ListOption>
+      <ListOption id="grey">
+        <Group name="bg_grey_switch" x="0" y="0" width="450" height="450">
+          <ListConfiguration id="bgGradient">
+            <ListOption id="none">
+          <Group name="bg_grey_none" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF262626"/></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+            <ListOption id="gradient">
+          <Group name="bg_grey_gradient" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF262626"/></Rectangle>
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF000000"><LinearGradient startX="225.0" startY="0" endX="225.0" endY="450" colors="#00000000 #FF000000" positions="0.00 1.00"/></Fill></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+            <ListOption id="dark_rainbow">
+          <Group name="bg_grey_dark_rainbow" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF262626"/></Rectangle>
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF931BBB"><LinearGradient startX="225.0" startY="0" endX="225.0" endY="450" colors="#00000000 #FF292119 #FF292919 #FF192919 #FF191929 #FF231929 #FF931BBB #FF931BBB" positions="0.00 0.09 0.19 0.28 0.38 0.47 0.57 1.00"/></Fill></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+          </ListConfiguration>
+        </Group>
+      </ListOption>
+      <ListOption id="grey_dark">
+        <Group name="bg_grey_dark_switch" x="0" y="0" width="450" height="450">
+          <ListConfiguration id="bgGradient">
+            <ListOption id="none">
+          <Group name="bg_grey_dark_none" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF060606"/></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+            <ListOption id="gradient">
+          <Group name="bg_grey_dark_gradient" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF060606"/></Rectangle>
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF000000"><LinearGradient startX="225.0" startY="0" endX="225.0" endY="450" colors="#00000000 #FF000000" positions="0.00 1.00"/></Fill></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+            <ListOption id="dark_rainbow">
+          <Group name="bg_grey_dark_dark_rainbow" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF060606"/></Rectangle>
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF931BBB"><LinearGradient startX="225.0" startY="0" endX="225.0" endY="450" colors="#00000000 #FF292119 #FF292919 #FF192919 #FF191929 #FF231929 #FF931BBB #FF931BBB" positions="0.00 0.09 0.19 0.28 0.38 0.47 0.57 1.00"/></Fill></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+          </ListConfiguration>
+        </Group>
+      </ListOption>
+      <ListOption id="midnight">
+        <Group name="bg_midnight_switch" x="0" y="0" width="450" height="450">
+          <ListConfiguration id="bgGradient">
+            <ListOption id="none">
+          <Group name="bg_midnight_none" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF000000"/></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+            <ListOption id="gradient">
+          <Group name="bg_midnight_gradient" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF000000"/></Rectangle>
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF000000"><LinearGradient startX="225.0" startY="0" endX="225.0" endY="450" colors="#00000000 #FF000000" positions="0.00 1.00"/></Fill></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+            <ListOption id="dark_rainbow">
+          <Group name="bg_midnight_dark_rainbow" x="0" y="0" width="450" height="450">
+            <PartDraw x="0" y="0" width="450" height="450">
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF000000"/></Rectangle>
+              <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF931BBB"><LinearGradient startX="225.0" startY="0" endX="225.0" endY="450" colors="#00000000 #FF292119 #FF292919 #FF192919 #FF191929 #FF231929 #FF931BBB #FF931BBB" positions="0.00 0.09 0.19 0.28 0.38 0.47 0.57 1.00"/></Fill></Rectangle>
+            </PartDraw>
+          </Group>
+            </ListOption>
+          </ListConfiguration>
+        </Group>
+      </ListOption>
+    </ListConfiguration>
     <Group name="background" x="0" y="0" width="450" height="450">
       <PartDraw x="0" y="0" width="450" height="450">
-        <Rectangle x="0" y="0" width="450" height="450"><Fill color="#FF0A0E1A"/></Rectangle>
+        <Rectangle x="0" y="320" width="450" height="130"><Fill color="#FF000000"/></Rectangle>
       </PartDraw>
-    <PartDraw x="132" y="24" width="5" height="5">
-      <Ellipse x="0" y="0" width="5.2" height="5.2"><Fill color="#FFE8E6D8"/></Ellipse>
+    <PartDraw x="132" y="116" width="5" height="5">
+      <Ellipse x="0" y="0" width="4.7" height="4.7"><Fill color="#FFE8E6D8"/></Ellipse>
     </PartDraw>
-    <PartDraw x="216" y="33" width="6" height="6">
-      <Ellipse x="0" y="0" width="6.2" height="6.2"><Fill color="#FFE8E6D8"/></Ellipse>
+    <PartDraw x="216" y="199" width="6" height="6">
+      <Ellipse x="0" y="0" width="5.8" height="5.8"><Fill color="#FFE8E6D8"/></Ellipse>
     </PartDraw>
-    <PartDraw x="231" y="27" width="5" height="5">
-      <Ellipse x="0" y="0" width="4.8" height="4.8"><Fill color="#FFE8E6D8"/></Ellipse>
+    <PartDraw x="232" y="144" width="4" height="4">
+      <Ellipse x="0" y="0" width="4.3" height="4.3"><Fill color="#FFE8E6D8"/></Ellipse>
     </PartDraw>
-    <PartDraw x="152" y="16" width="6" height="6">
-      <Ellipse x="0" y="0" width="6.1" height="6.1"><Fill color="#FFE8E6D8"/></Ellipse>
-    </PartDraw>
-    <PartDraw x="229" y="28" width="3" height="3">
-      <Ellipse x="0" y="0" width="3.1" height="3.1"><Fill color="#FFE8E6D8"/></Ellipse>
-    </PartDraw>
-    <PartDraw x="309" y="17" width="4" height="4">
-      <Ellipse x="0" y="0" width="3.9" height="3.9"><Fill color="#FFE8E6D8"/></Ellipse>
-    </PartDraw>
-    <PartDraw x="202" y="27" width="5" height="5">
-      <Ellipse x="0" y="0" width="5.4" height="5.4"><Fill color="#FFE8E6D8"/></Ellipse>
-    </PartDraw>
-    <PartDraw x="19" y="39" width="6" height="6">
+    <PartDraw x="152" y="54" width="6" height="6">
       <Ellipse x="0" y="0" width="5.7" height="5.7"><Fill color="#FFE8E6D8"/></Ellipse>
     </PartDraw>
-    <PartDraw x="246" y="34" width="4" height="4">
-      <Ellipse x="0" y="0" width="4.0" height="4.0"><Fill color="#FFE8E6D8"/></Ellipse>
+    <PartDraw x="229" y="143" width="3" height="3">
+      <Ellipse x="0" y="0" width="2.5" height="2.5"><Fill color="#FFE8E6D8"/></Ellipse>
     </PartDraw>
-    <PartDraw x="414" y="305" width="3" height="3">
-      <Ellipse x="0" y="0" width="3.2" height="3.2"><Fill color="#FFE8E6D8"/></Ellipse>
+    <PartDraw x="310" y="53" width="3" height="3">
+      <Ellipse x="0" y="0" width="3.4" height="3.4"><Fill color="#FFE8E6D8"/></Ellipse>
     </PartDraw>
-    <PartDraw x="411" y="227" width="4" height="4">
-      <Ellipse x="0" y="0" width="3.6" height="3.6"><Fill color="#FFE8E6D8"/></Ellipse>
-    </PartDraw>
-    <PartDraw x="20" y="321" width="5" height="5">
-      <Ellipse x="0" y="0" width="4.7" height="4.7"><Fill color="#FFE8E6D8"/></Ellipse>
-    </PartDraw>
-    <PartDraw x="411" y="137" width="4" height="4">
-      <Ellipse x="0" y="0" width="4.4" height="4.4"><Fill color="#FFE8E6D8"/></Ellipse>
-    </PartDraw>
-    <PartDraw x="407" y="303" width="6" height="6">
-      <Ellipse x="0" y="0" width="5.5" height="5.5"><Fill color="#FFE8E6D8"/></Ellipse>
-    </PartDraw>
-    <PartDraw x="18" y="194" width="5" height="5">
+    <PartDraw x="202" y="146" width="5" height="5">
       <Ellipse x="0" y="0" width="4.9" height="4.9"><Fill color="#FFE8E6D8"/></Ellipse>
     </PartDraw>
-    <PartDraw x="46" y="149" width="3" height="3">
-      <Ellipse x="0" y="0" width="2.8" height="2.8"><Fill color="#FFE8E6D8"/></Ellipse>
+    <PartDraw x="17" y="242" width="5" height="5">
+      <Ellipse x="0" y="0" width="5.2" height="5.2"><Fill color="#FFE8E6D8"/></Ellipse>
     </PartDraw>
-    <PartDraw x="402" y="323" width="3" height="3">
-      <Ellipse x="0" y="0" width="2.6" height="2.6"><Fill color="#FFE8E6D8"/></Ellipse>
+    <PartDraw x="246" y="197" width="3" height="3">
+      <Ellipse x="0" y="0" width="3.4" height="3.4"><Fill color="#FFE8E6D8"/></Ellipse>
     </PartDraw>
-    <PartDraw x="267" y="369" width="5" height="5">
-      <Ellipse x="0" y="0" width="4.7" height="4.7"><Fill color="#FFE8E6D8"/></Ellipse>
+    <PartDraw x="226" y="129" width="6" height="6">
+      <Ellipse x="0" y="0" width="5.9" height="5.9"><Fill color="#FFE8E6D8"/></Ellipse>
     </PartDraw>
-    <PartDraw x="56" y="331" width="4" height="4">
+    <PartDraw x="334" y="71" width="3" height="3">
+      <Ellipse x="0" y="0" width="3.4" height="3.4"><Fill color="#FFE8E6D8"/></Ellipse>
+    </PartDraw>
+    <PartDraw x="182" y="89" width="3" height="3">
+      <Ellipse x="0" y="0" width="3.3" height="3.3"><Fill color="#FFE8E6D8"/></Ellipse>
+    </PartDraw>
+    <PartDraw x="45" y="195" width="4" height="4">
+      <Ellipse x="0" y="0" width="4.4" height="4.4"><Fill color="#FFE8E6D8"/></Ellipse>
+    </PartDraw>
+    <PartDraw x="363" y="182" width="6" height="6">
+      <Ellipse x="0" y="0" width="5.7" height="5.7"><Fill color="#FFE8E6D8"/></Ellipse>
+    </PartDraw>
+    <PartDraw x="189" y="103" width="3" height="3">
+      <Ellipse x="0" y="0" width="3.3" height="3.3"><Fill color="#FFE8E6D8"/></Ellipse>
+    </PartDraw>
+    <PartDraw x="137" y="50" width="6" height="6">
+      <Ellipse x="0" y="0" width="5.7" height="5.7"><Fill color="#FFE8E6D8"/></Ellipse>
+    </PartDraw>
+    <PartDraw x="193" y="172" width="4" height="4">
+      <Ellipse x="0" y="0" width="4.0" height="4.0"><Fill color="#FFE8E6D8"/></Ellipse>
+    </PartDraw>
+    <PartDraw x="80" y="112" width="3" height="3">
+      <Ellipse x="0" y="0" width="3.3" height="3.3"><Fill color="#FFE8E6D8"/></Ellipse>
+    </PartDraw>
+    <PartDraw x="333" y="225" width="6" height="6">
+      <Ellipse x="0" y="0" width="5.9" height="5.9"><Fill color="#FFE8E6D8"/></Ellipse>
+    </PartDraw>
+    <PartDraw x="69" y="194" width="4" height="4">
       <Ellipse x="0" y="0" width="3.7" height="3.7"><Fill color="#FFE8E6D8"/></Ellipse>
     </PartDraw>
-    <PartDraw x="66" y="336" width="4" height="4">
+    <PartDraw x="157" y="166" width="5" height="5">
+      <Ellipse x="0" y="0" width="5.4" height="5.4"><Fill color="#FFE8E6D8"/></Ellipse>
+    </PartDraw>
+    <PartDraw x="39" y="158" width="6" height="6">
+      <Ellipse x="0" y="0" width="5.7" height="5.7"><Fill color="#FFE8E6D8"/></Ellipse>
+    </PartDraw>
+    <PartDraw x="419" y="26" width="2" height="2">
+      <Ellipse x="0" y="0" width="2.5" height="2.5"><Fill color="#FFE8E6D8"/></Ellipse>
+    </PartDraw>
+    <PartDraw x="245" y="32" width="3" height="3">
+      <Ellipse x="0" y="0" width="2.9" height="2.9"><Fill color="#FFE8E6D8"/></Ellipse>
+    </PartDraw>
+    <PartDraw x="302" y="134" width="3" height="3">
+      <Ellipse x="0" y="0" width="2.6" height="2.6"><Fill color="#FFE8E6D8"/></Ellipse>
+    </PartDraw>
+    <PartDraw x="329" y="217" width="3" height="3">
+      <Ellipse x="0" y="0" width="3.3" height="3.3"><Fill color="#FFE8E6D8"/></Ellipse>
+    </PartDraw>
+    <PartDraw x="223" y="223" width="6" height="6">
+      <Ellipse x="0" y="0" width="5.5" height="5.5"><Fill color="#FFE8E6D8"/></Ellipse>
+    </PartDraw>
+    <PartDraw x="276" y="64" width="2" height="2">
+      <Ellipse x="0" y="0" width="2.2" height="2.2"><Fill color="#FFE8E6D8"/></Ellipse>
+    </PartDraw>
+    <PartDraw x="385" y="132" width="6" height="6">
+      <Ellipse x="0" y="0" width="5.7" height="5.7"><Fill color="#FFE8E6D8"/></Ellipse>
+    </PartDraw>
+    <PartDraw x="207" y="68" width="4" height="4">
+      <Ellipse x="0" y="0" width="3.5" height="3.5"><Fill color="#FFE8E6D8"/></Ellipse>
+    </PartDraw>
+    <PartDraw x="168" y="107" width="4" height="4">
+      <Ellipse x="0" y="0" width="3.9" height="3.9"><Fill color="#FFE8E6D8"/></Ellipse>
+    </PartDraw>
+    <PartDraw x="212" y="110" width="4" height="4">
+      <Ellipse x="0" y="0" width="4.5" height="4.5"><Fill color="#FFE8E6D8"/></Ellipse>
+    </PartDraw>
+    <PartDraw x="291" y="17" width="4" height="4">
       <Ellipse x="0" y="0" width="4.1" height="4.1"><Fill color="#FFE8E6D8"/></Ellipse>
     </PartDraw>
-    <PartDraw x="227" y="333" width="4" height="4">
-      <Ellipse x="0" y="0" width="4.2" height="4.2"><Fill color="#FFE8E6D8"/></Ellipse>
+    <PartDraw x="109" y="47" width="4" height="4">
+      <Ellipse x="0" y="0" width="4.3" height="4.3"><Fill color="#FFE8E6D8"/></Ellipse>
     </PartDraw>
     <PartDraw x="0" y="0" width="450" height="450">
-      <Rectangle x="57" y="150" width="72" height="160"><Stroke color="#FF4A4D57" thickness="3"/><Fill color="#FF888C96"/></Rectangle>
-      <Rectangle x="71.4" y="150" width="14.4" height="16"><Fill color="#FF0A0E1A"/></Rectangle><Rectangle x="100.2" y="150" width="14.4" height="16"><Fill color="#FF0A0E1A"/></Rectangle>
+      <Rectangle x="83.13" y="265.00" width="19.74" height="2.00"><Fill color="#FF888C96"/></Rectangle><Rectangle x="82.72" y="267.00" width="20.57" height="2.00"><Fill color="#FF888C96"/></Rectangle><Rectangle x="81.87" y="269.00" width="22.26" height="2.00"><Fill color="#FF888C96"/></Rectangle><Rectangle x="80.54" y="271.00" width="24.91" height="2.00"><Fill color="#FF888C96"/></Rectangle><Rectangle x="78.65" y="273.00" width="28.71" height="2.00"><Fill color="#FF888C96"/></Rectangle><Rectangle x="76.01" y="275.00" width="33.97" height="2.00"><Fill color="#FF888C96"/></Rectangle><Rectangle x="72.26" y="277.00" width="41.47" height="2.00"><Fill color="#FF888C96"/></Rectangle><Rectangle x="66.11" y="279.00" width="50.89" height="2.00"><Fill color="#FF888C96"/></Rectangle><Rectangle x="117.00" y="279.00" width="2.89" height="2.00"><Fill color="#FF3A3C41"/></Rectangle><Rectangle x="57.00" y="281.00" width="6.00" height="64.00"><Fill color="#FFB9BBC1"/></Rectangle><Rectangle x="63.00" y="281.00" width="54.00" height="64.00"><Fill color="#FF888C96"/></Rectangle><Rectangle x="117.00" y="281.00" width="6.00" height="64.00"><Fill color="#FF3A3C41"/></Rectangle><Rectangle x="123.00" y="281.00" width="6.00" height="64.00"><Fill color="#FF5E6169"/></Rectangle>
     </PartDraw>
-    <PartText x="57" y="150" width="72" height="160">
+    <PartDraw x="0" y="0" width="450" height="450">
+      <Rectangle x="167.13" y="265.00" width="19.74" height="2.00"><Fill color="#FF888C96"/></Rectangle><Rectangle x="166.72" y="267.00" width="20.57" height="2.00"><Fill color="#FF888C96"/></Rectangle><Rectangle x="165.87" y="269.00" width="22.26" height="2.00"><Fill color="#FF888C96"/></Rectangle><Rectangle x="164.54" y="271.00" width="24.91" height="2.00"><Fill color="#FF888C96"/></Rectangle><Rectangle x="162.65" y="273.00" width="28.71" height="2.00"><Fill color="#FF888C96"/></Rectangle><Rectangle x="160.01" y="275.00" width="33.97" height="2.00"><Fill color="#FF888C96"/></Rectangle><Rectangle x="156.26" y="277.00" width="41.47" height="2.00"><Fill color="#FF888C96"/></Rectangle><Rectangle x="150.11" y="279.00" width="50.89" height="2.00"><Fill color="#FF888C96"/></Rectangle><Rectangle x="201.00" y="279.00" width="2.89" height="2.00"><Fill color="#FF3A3C41"/></Rectangle><Rectangle x="141.00" y="281.00" width="6.00" height="64.00"><Fill color="#FFB9BBC1"/></Rectangle><Rectangle x="147.00" y="281.00" width="54.00" height="64.00"><Fill color="#FF888C96"/></Rectangle><Rectangle x="201.00" y="281.00" width="6.00" height="64.00"><Fill color="#FF3A3C41"/></Rectangle><Rectangle x="207.00" y="281.00" width="6.00" height="64.00"><Fill color="#FF5E6169"/></Rectangle>
+    </PartDraw>
+    <PartDraw x="0" y="0" width="450" height="450">
+      <Rectangle x="263.13" y="265.00" width="19.74" height="2.00"><Fill color="#FF888C96"/></Rectangle><Rectangle x="262.72" y="267.00" width="20.57" height="2.00"><Fill color="#FF888C96"/></Rectangle><Rectangle x="261.87" y="269.00" width="22.26" height="2.00"><Fill color="#FF888C96"/></Rectangle><Rectangle x="260.54" y="271.00" width="24.91" height="2.00"><Fill color="#FF888C96"/></Rectangle><Rectangle x="258.65" y="273.00" width="28.71" height="2.00"><Fill color="#FF888C96"/></Rectangle><Rectangle x="256.01" y="275.00" width="33.97" height="2.00"><Fill color="#FF888C96"/></Rectangle><Rectangle x="252.26" y="277.00" width="41.47" height="2.00"><Fill color="#FF888C96"/></Rectangle><Rectangle x="246.11" y="279.00" width="50.89" height="2.00"><Fill color="#FF888C96"/></Rectangle><Rectangle x="297.00" y="279.00" width="2.89" height="2.00"><Fill color="#FF3A3C41"/></Rectangle><Rectangle x="237.00" y="281.00" width="6.00" height="64.00"><Fill color="#FFB9BBC1"/></Rectangle><Rectangle x="243.00" y="281.00" width="54.00" height="64.00"><Fill color="#FF888C96"/></Rectangle><Rectangle x="297.00" y="281.00" width="6.00" height="64.00"><Fill color="#FF3A3C41"/></Rectangle><Rectangle x="303.00" y="281.00" width="6.00" height="64.00"><Fill color="#FF5E6169"/></Rectangle>
+    </PartDraw>
+    <PartDraw x="0" y="0" width="450" height="450">
+      <Rectangle x="347.13" y="265.00" width="19.74" height="2.00"><Fill color="#FF888C96"/></Rectangle><Rectangle x="346.72" y="267.00" width="20.57" height="2.00"><Fill color="#FF888C96"/></Rectangle><Rectangle x="345.87" y="269.00" width="22.26" height="2.00"><Fill color="#FF888C96"/></Rectangle><Rectangle x="344.54" y="271.00" width="24.91" height="2.00"><Fill color="#FF888C96"/></Rectangle><Rectangle x="342.65" y="273.00" width="28.71" height="2.00"><Fill color="#FF888C96"/></Rectangle><Rectangle x="340.01" y="275.00" width="33.97" height="2.00"><Fill color="#FF888C96"/></Rectangle><Rectangle x="336.26" y="277.00" width="41.47" height="2.00"><Fill color="#FF888C96"/></Rectangle><Rectangle x="330.11" y="279.00" width="50.89" height="2.00"><Fill color="#FF888C96"/></Rectangle><Rectangle x="381.00" y="279.00" width="2.89" height="2.00"><Fill color="#FF3A3C41"/></Rectangle><Rectangle x="321.00" y="281.00" width="6.00" height="64.00"><Fill color="#FFB9BBC1"/></Rectangle><Rectangle x="327.00" y="281.00" width="54.00" height="64.00"><Fill color="#FF888C96"/></Rectangle><Rectangle x="381.00" y="281.00" width="6.00" height="64.00"><Fill color="#FF3A3C41"/></Rectangle><Rectangle x="387.00" y="281.00" width="6.00" height="64.00"><Fill color="#FF5E6169"/></Rectangle>
+    </PartDraw>
+    <PartText x="57" y="283" width="72" height="52">
       <Text align="CENTER">
-        <Font family="SYNC_TO_DEVICE" size="64" weight="BLACK" color="#FF1C1A22">
+        <Font family="serif" size="44" weight="BOLD" color="#FF2A2C30">
           <Template>%d<Parameter expression="floor([HOUR_0_23] / 10)"/></Template>
         </Font>
       </Text>
     </PartText>
-    <PartDraw x="0" y="0" width="450" height="450">
-      <Rectangle x="141" y="150" width="72" height="160"><Stroke color="#FF4A4D57" thickness="3"/><Fill color="#FF888C96"/></Rectangle>
-      <Rectangle x="155.4" y="150" width="14.4" height="16"><Fill color="#FF0A0E1A"/></Rectangle><Rectangle x="184.2" y="150" width="14.4" height="16"><Fill color="#FF0A0E1A"/></Rectangle>
-    </PartDraw>
-    <PartText x="141" y="150" width="72" height="160">
+    <PartText x="141" y="283" width="72" height="52">
       <Text align="CENTER">
-        <Font family="SYNC_TO_DEVICE" size="64" weight="BLACK" color="#FF1C1A22">
+        <Font family="serif" size="44" weight="BOLD" color="#FF2A2C30">
           <Template>%d<Parameter expression="floor([HOUR_0_23] % 10)"/></Template>
         </Font>
       </Text>
     </PartText>
-    <PartDraw x="0" y="0" width="450" height="450">
-      <Rectangle x="237" y="150" width="72" height="160"><Stroke color="#FF4A4D57" thickness="3"/><Fill color="#FF888C96"/></Rectangle>
-      <Rectangle x="251.4" y="150" width="14.4" height="16"><Fill color="#FF0A0E1A"/></Rectangle><Rectangle x="280.2" y="150" width="14.4" height="16"><Fill color="#FF0A0E1A"/></Rectangle>
-    </PartDraw>
-    <PartText x="237" y="150" width="72" height="160">
+    <PartText x="237" y="283" width="72" height="52">
       <Text align="CENTER">
-        <Font family="SYNC_TO_DEVICE" size="64" weight="BLACK" color="#FF1C1A22">
+        <Font family="serif" size="44" weight="BOLD" color="#FF2A2C30">
           <Template>%d<Parameter expression="floor([MINUTE] / 10)"/></Template>
         </Font>
       </Text>
     </PartText>
-    <PartDraw x="0" y="0" width="450" height="450">
-      <Rectangle x="321" y="150" width="72" height="160"><Stroke color="#FF4A4D57" thickness="3"/><Fill color="#FF888C96"/></Rectangle>
-      <Rectangle x="335.4" y="150" width="14.4" height="16"><Fill color="#FF0A0E1A"/></Rectangle><Rectangle x="364.2" y="150" width="14.4" height="16"><Fill color="#FF0A0E1A"/></Rectangle>
-    </PartDraw>
-    <PartText x="321" y="150" width="72" height="160">
+    <PartText x="321" y="283" width="72" height="52">
       <Text align="CENTER">
-        <Font family="SYNC_TO_DEVICE" size="64" weight="BLACK" color="#FF1C1A22">
+        <Font family="serif" size="44" weight="BOLD" color="#FF2A2C30">
           <Template>%d<Parameter expression="floor([MINUTE] % 10)"/></Template>
         </Font>
       </Text>
     </PartText>
     <Condition>
       <Expressions>
-        <Expression name="ghost_0"><![CDATA[floor([MINUTE] % 6) == 0]]></Expression>
+        <Expression name="ghost_s0_h0_t0"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 1]]></Expression>
       </Expressions>
-      <Compare expression="ghost_0">
-        <PartImage x="71" y="124" width="44" height="44">
+      <Compare expression="ghost_s0_h0_t0">
+        <PartImage x="49" y="243" width="88" height="88">
           <Image resource="ghost_0"/>
         </PartImage>
       </Compare>
     </Condition>
     <Condition>
       <Expressions>
-        <Expression name="ghost_1"><![CDATA[floor([MINUTE] % 6) == 1]]></Expression>
+        <Expression name="ghost_s0_h0_t1"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 2]]></Expression>
       </Expressions>
-      <Compare expression="ghost_1">
-        <PartImage x="158" y="124" width="38" height="38">
+      <Compare expression="ghost_s0_h0_t1">
+        <PartImage x="79" y="219" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h0_t2"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 3]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h0_t2">
+        <PartImage x="77" y="194" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h0_t3"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 4]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h0_t3">
+        <PartImage x="49" y="170" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h0_t4"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 5]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h0_t4">
+        <PartImage x="28" y="146" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h0_t5"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 6]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h0_t5">
+        <PartImage x="41" y="121" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h0_t6"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 7]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h0_t6">
+        <PartImage x="75" y="97" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h0_t7"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 8]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h0_t7">
+        <PartImage x="95" y="72" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h0_t8"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 9]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h0_t8">
+        <PartImage x="80" y="48" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h0_t9"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 10]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h0_t9">
+        <PartImage x="49" y="24" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h0_t10"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 11]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h0_t10">
+        <PartImage x="40" y="-1" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h0_t11"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 12]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h0_t11">
+        <PartImage x="66" y="-25" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h0_t12"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 13]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h0_t12">
+        <PartImage x="99" y="-49" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h0_t13"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 14]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h0_t13">
+        <PartImage x="105" y="-74" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h0_t14"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 15]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h0_t14">
+        <PartImage x="79" y="-98" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h1_t0"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 1]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h1_t0">
+        <PartImage x="55" y="246" width="76" height="76">
           <Image resource="ghost_1"/>
         </PartImage>
       </Compare>
     </Condition>
     <Condition>
       <Expressions>
-        <Expression name="ghost_2"><![CDATA[floor([MINUTE] % 6) == 2]]></Expression>
+        <Expression name="ghost_s0_h1_t1"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 2]]></Expression>
       </Expressions>
-      <Compare expression="ghost_2">
-        <PartImage x="248" y="124" width="50" height="50">
+      <Compare expression="ghost_s0_h1_t1">
+        <PartImage x="76" y="222" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h1_t2"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 3]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h1_t2">
+        <PartImage x="62" y="199" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h1_t3"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 4]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h1_t3">
+        <PartImage x="33" y="175" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h1_t4"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 5]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h1_t4">
+        <PartImage x="31" y="151" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h1_t5"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 6]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h1_t5">
+        <PartImage x="58" y="127" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h1_t6"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 7]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h1_t6">
+        <PartImage x="69" y="104" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h1_t7"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 8]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h1_t7">
+        <PartImage x="45" y="80" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h1_t8"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 9]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h1_t8">
+        <PartImage x="21" y="56" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h1_t9"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 10]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h1_t9">
+        <PartImage x="32" y="33" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h1_t10"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 11]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h1_t10">
+        <PartImage x="59" y="9" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h1_t11"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 12]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h1_t11">
+        <PartImage x="57" y="-15" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h1_t12"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 13]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h1_t12">
+        <PartImage x="28" y="-39" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h1_t13"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 14]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h1_t13">
+        <PartImage x="14" y="-62" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h1_t14"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 15]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h1_t14">
+        <PartImage x="35" y="-86" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h2_t0"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 1]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h2_t0">
+        <PartImage x="52" y="244" width="82" height="82">
           <Image resource="ghost_2"/>
         </PartImage>
       </Compare>
     </Condition>
     <Condition>
       <Expressions>
-        <Expression name="ghost_3"><![CDATA[floor([MINUTE] % 6) == 3]]></Expression>
+        <Expression name="ghost_s0_h2_t1"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 2]]></Expression>
       </Expressions>
-      <Compare expression="ghost_3">
-        <PartImage x="337" y="124" width="40" height="40">
+      <Compare expression="ghost_s0_h2_t1">
+        <PartImage x="79" y="220" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h2_t2"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 3]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h2_t2">
+        <PartImage x="86" y="196" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h2_t3"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 4]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h2_t3">
+        <PartImage x="69" y="172" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h2_t4"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 5]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h2_t4">
+        <PartImage x="42" y="148" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h2_t5"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 6]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h2_t5">
+        <PartImage x="25" y="124" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h2_t6"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 7]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h2_t6">
+        <PartImage x="33" y="100" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h2_t7"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 8]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h2_t7">
+        <PartImage x="59" y="76" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h2_t8"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 9]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h2_t8">
+        <PartImage x="86" y="52" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h2_t9"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 10]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h2_t9">
+        <PartImage x="94" y="28" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h2_t10"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 11]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h2_t10">
+        <PartImage x="77" y="4" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h2_t11"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 12]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h2_t11">
+        <PartImage x="50" y="-20" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h2_t12"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 13]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h2_t12">
+        <PartImage x="33" y="-44" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h2_t13"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 14]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h2_t13">
+        <PartImage x="40" y="-68" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h2_t14"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 15]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h2_t14">
+        <PartImage x="67" y="-92" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h3_t0"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 1]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h3_t0">
+        <PartImage x="53" y="245" width="80" height="80">
           <Image resource="ghost_3"/>
         </PartImage>
       </Compare>
     </Condition>
     <Condition>
       <Expressions>
-        <Expression name="ghost_4"><![CDATA[floor([MINUTE] % 6) == 4]]></Expression>
+        <Expression name="ghost_s0_h3_t1"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 2]]></Expression>
       </Expressions>
-      <Compare expression="ghost_4">
-        <PartImage x="112" y="124" width="46" height="46">
-          <Image resource="ghost_4"/>
+      <Compare expression="ghost_s0_h3_t1">
+        <PartImage x="73" y="221" width="80" height="80">
+          <Image resource="ghost_3"/>
         </PartImage>
       </Compare>
     </Condition>
     <Condition>
       <Expressions>
-        <Expression name="ghost_5"><![CDATA[floor([MINUTE] % 6) == 5]]></Expression>
+        <Expression name="ghost_s0_h3_t2"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 3]]></Expression>
       </Expressions>
-      <Compare expression="ghost_5">
-        <PartImage x="291" y="124" width="48" height="48">
-          <Image resource="ghost_5"/>
+      <Compare expression="ghost_s0_h3_t2">
+        <PartImage x="48" y="197" width="80" height="80">
+          <Image resource="ghost_3"/>
         </PartImage>
       </Compare>
     </Condition>
-    <PartDraw x="0" y="0" width="450" height="450">
-      <RoundRectangle x="98" y="48" width="120" height="68" cornerRadiusX="12" cornerRadiusY="12"><Fill color="#FF14192A"/></RoundRectangle>
-    </PartDraw>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h3_t3"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 4]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h3_t3">
+        <PartImage x="23" y="173" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h3_t4"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 5]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h3_t4">
+        <PartImage x="43" y="149" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h3_t5"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 6]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h3_t5">
+        <PartImage x="63" y="125" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h3_t6"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 7]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h3_t6">
+        <PartImage x="38" y="101" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h3_t7"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 8]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h3_t7">
+        <PartImage x="13" y="78" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h3_t8"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 9]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h3_t8">
+        <PartImage x="33" y="54" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h3_t9"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 10]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h3_t9">
+        <PartImage x="53" y="30" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h3_t10"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 11]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h3_t10">
+        <PartImage x="28" y="6" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h3_t11"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 12]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h3_t11">
+        <PartImage x="3" y="-18" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h3_t12"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 13]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h3_t12">
+        <PartImage x="23" y="-42" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h3_t13"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 14]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h3_t13">
+        <PartImage x="43" y="-66" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s0_h3_t14"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 15]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s0_h3_t14">
+        <PartImage x="18" y="-90" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h0_t0"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 16]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h0_t0">
+        <PartImage x="139" y="246" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h0_t1"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 17]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h0_t1">
+        <PartImage x="160" y="222" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h0_t2"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 18]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h0_t2">
+        <PartImage x="146" y="199" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h0_t3"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 19]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h0_t3">
+        <PartImage x="117" y="175" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h0_t4"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 20]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h0_t4">
+        <PartImage x="115" y="151" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h0_t5"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 21]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h0_t5">
+        <PartImage x="142" y="127" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h0_t6"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 22]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h0_t6">
+        <PartImage x="153" y="104" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h0_t7"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 23]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h0_t7">
+        <PartImage x="129" y="80" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h0_t8"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 24]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h0_t8">
+        <PartImage x="105" y="56" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h0_t9"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 25]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h0_t9">
+        <PartImage x="116" y="33" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h0_t10"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 26]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h0_t10">
+        <PartImage x="143" y="9" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h0_t11"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 27]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h0_t11">
+        <PartImage x="141" y="-15" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h0_t12"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 28]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h0_t12">
+        <PartImage x="112" y="-39" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h0_t13"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 29]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h0_t13">
+        <PartImage x="98" y="-62" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h0_t14"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 30]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h0_t14">
+        <PartImage x="119" y="-86" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h1_t0"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 16]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h1_t0">
+        <PartImage x="136" y="244" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h1_t1"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 17]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h1_t1">
+        <PartImage x="163" y="220" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h1_t2"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 18]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h1_t2">
+        <PartImage x="170" y="196" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h1_t3"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 19]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h1_t3">
+        <PartImage x="153" y="172" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h1_t4"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 20]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h1_t4">
+        <PartImage x="126" y="148" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h1_t5"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 21]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h1_t5">
+        <PartImage x="109" y="124" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h1_t6"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 22]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h1_t6">
+        <PartImage x="117" y="100" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h1_t7"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 23]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h1_t7">
+        <PartImage x="143" y="76" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h1_t8"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 24]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h1_t8">
+        <PartImage x="170" y="52" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h1_t9"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 25]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h1_t9">
+        <PartImage x="178" y="28" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h1_t10"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 26]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h1_t10">
+        <PartImage x="161" y="4" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h1_t11"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 27]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h1_t11">
+        <PartImage x="134" y="-20" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h1_t12"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 28]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h1_t12">
+        <PartImage x="117" y="-44" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h1_t13"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 29]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h1_t13">
+        <PartImage x="124" y="-68" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h1_t14"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 30]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h1_t14">
+        <PartImage x="151" y="-92" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h2_t0"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 16]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h2_t0">
+        <PartImage x="137" y="245" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h2_t1"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 17]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h2_t1">
+        <PartImage x="157" y="221" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h2_t2"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 18]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h2_t2">
+        <PartImage x="132" y="197" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h2_t3"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 19]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h2_t3">
+        <PartImage x="107" y="173" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h2_t4"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 20]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h2_t4">
+        <PartImage x="127" y="149" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h2_t5"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 21]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h2_t5">
+        <PartImage x="147" y="125" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h2_t6"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 22]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h2_t6">
+        <PartImage x="122" y="101" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h2_t7"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 23]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h2_t7">
+        <PartImage x="97" y="78" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h2_t8"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 24]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h2_t8">
+        <PartImage x="117" y="54" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h2_t9"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 25]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h2_t9">
+        <PartImage x="137" y="30" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h2_t10"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 26]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h2_t10">
+        <PartImage x="112" y="6" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h2_t11"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 27]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h2_t11">
+        <PartImage x="87" y="-18" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h2_t12"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 28]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h2_t12">
+        <PartImage x="107" y="-42" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h2_t13"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 29]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h2_t13">
+        <PartImage x="127" y="-66" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h2_t14"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 30]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h2_t14">
+        <PartImage x="102" y="-90" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h3_t0"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 16]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h3_t0">
+        <PartImage x="133" y="243" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h3_t1"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 17]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h3_t1">
+        <PartImage x="163" y="219" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h3_t2"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 18]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h3_t2">
+        <PartImage x="161" y="194" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h3_t3"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 19]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h3_t3">
+        <PartImage x="133" y="170" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h3_t4"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 20]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h3_t4">
+        <PartImage x="112" y="146" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h3_t5"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 21]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h3_t5">
+        <PartImage x="125" y="121" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h3_t6"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 22]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h3_t6">
+        <PartImage x="159" y="97" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h3_t7"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 23]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h3_t7">
+        <PartImage x="179" y="72" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h3_t8"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 24]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h3_t8">
+        <PartImage x="164" y="48" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h3_t9"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 25]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h3_t9">
+        <PartImage x="133" y="24" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h3_t10"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 26]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h3_t10">
+        <PartImage x="124" y="-1" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h3_t11"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 27]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h3_t11">
+        <PartImage x="150" y="-25" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h3_t12"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 28]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h3_t12">
+        <PartImage x="183" y="-49" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h3_t13"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 29]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h3_t13">
+        <PartImage x="189" y="-74" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s1_h3_t14"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 30]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s1_h3_t14">
+        <PartImage x="163" y="-98" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h0_t0"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 31]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h0_t0">
+        <PartImage x="232" y="244" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h0_t1"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 32]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h0_t1">
+        <PartImage x="259" y="220" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h0_t2"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 33]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h0_t2">
+        <PartImage x="266" y="196" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h0_t3"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 34]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h0_t3">
+        <PartImage x="249" y="172" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h0_t4"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 35]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h0_t4">
+        <PartImage x="222" y="148" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h0_t5"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 36]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h0_t5">
+        <PartImage x="205" y="124" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h0_t6"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 37]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h0_t6">
+        <PartImage x="213" y="100" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h0_t7"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 38]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h0_t7">
+        <PartImage x="239" y="76" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h0_t8"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 39]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h0_t8">
+        <PartImage x="266" y="52" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h0_t9"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 40]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h0_t9">
+        <PartImage x="274" y="28" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h0_t10"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 41]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h0_t10">
+        <PartImage x="257" y="4" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h0_t11"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 42]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h0_t11">
+        <PartImage x="230" y="-20" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h0_t12"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 43]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h0_t12">
+        <PartImage x="213" y="-44" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h0_t13"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 44]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h0_t13">
+        <PartImage x="220" y="-68" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h0_t14"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 45]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h0_t14">
+        <PartImage x="247" y="-92" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h1_t0"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 31]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h1_t0">
+        <PartImage x="233" y="245" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h1_t1"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 32]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h1_t1">
+        <PartImage x="253" y="221" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h1_t2"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 33]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h1_t2">
+        <PartImage x="228" y="197" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h1_t3"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 34]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h1_t3">
+        <PartImage x="203" y="173" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h1_t4"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 35]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h1_t4">
+        <PartImage x="223" y="149" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h1_t5"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 36]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h1_t5">
+        <PartImage x="243" y="125" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h1_t6"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 37]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h1_t6">
+        <PartImage x="218" y="101" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h1_t7"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 38]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h1_t7">
+        <PartImage x="193" y="78" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h1_t8"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 39]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h1_t8">
+        <PartImage x="213" y="54" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h1_t9"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 40]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h1_t9">
+        <PartImage x="233" y="30" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h1_t10"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 41]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h1_t10">
+        <PartImage x="208" y="6" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h1_t11"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 42]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h1_t11">
+        <PartImage x="183" y="-18" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h1_t12"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 43]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h1_t12">
+        <PartImage x="203" y="-42" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h1_t13"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 44]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h1_t13">
+        <PartImage x="223" y="-66" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h1_t14"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 45]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h1_t14">
+        <PartImage x="198" y="-90" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h2_t0"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 31]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h2_t0">
+        <PartImage x="229" y="243" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h2_t1"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 32]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h2_t1">
+        <PartImage x="259" y="219" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h2_t2"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 33]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h2_t2">
+        <PartImage x="257" y="194" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h2_t3"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 34]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h2_t3">
+        <PartImage x="229" y="170" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h2_t4"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 35]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h2_t4">
+        <PartImage x="208" y="146" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h2_t5"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 36]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h2_t5">
+        <PartImage x="221" y="121" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h2_t6"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 37]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h2_t6">
+        <PartImage x="255" y="97" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h2_t7"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 38]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h2_t7">
+        <PartImage x="275" y="72" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h2_t8"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 39]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h2_t8">
+        <PartImage x="260" y="48" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h2_t9"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 40]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h2_t9">
+        <PartImage x="229" y="24" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h2_t10"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 41]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h2_t10">
+        <PartImage x="220" y="-1" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h2_t11"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 42]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h2_t11">
+        <PartImage x="246" y="-25" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h2_t12"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 43]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h2_t12">
+        <PartImage x="279" y="-49" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h2_t13"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 44]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h2_t13">
+        <PartImage x="285" y="-74" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h2_t14"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 45]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h2_t14">
+        <PartImage x="259" y="-98" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h3_t0"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 31]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h3_t0">
+        <PartImage x="235" y="246" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h3_t1"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 32]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h3_t1">
+        <PartImage x="256" y="222" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h3_t2"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 33]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h3_t2">
+        <PartImage x="242" y="199" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h3_t3"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 34]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h3_t3">
+        <PartImage x="213" y="175" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h3_t4"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 35]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h3_t4">
+        <PartImage x="211" y="151" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h3_t5"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 36]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h3_t5">
+        <PartImage x="238" y="127" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h3_t6"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 37]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h3_t6">
+        <PartImage x="249" y="104" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h3_t7"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 38]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h3_t7">
+        <PartImage x="225" y="80" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h3_t8"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 39]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h3_t8">
+        <PartImage x="201" y="56" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h3_t9"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 40]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h3_t9">
+        <PartImage x="212" y="33" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h3_t10"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 41]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h3_t10">
+        <PartImage x="239" y="9" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h3_t11"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 42]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h3_t11">
+        <PartImage x="237" y="-15" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h3_t12"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 43]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h3_t12">
+        <PartImage x="208" y="-39" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h3_t13"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 44]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h3_t13">
+        <PartImage x="194" y="-62" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s2_h3_t14"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 45]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s2_h3_t14">
+        <PartImage x="215" y="-86" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h0_t0"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 46]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h0_t0">
+        <PartImage x="317" y="245" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h0_t1"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 47]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h0_t1">
+        <PartImage x="337" y="221" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h0_t2"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 48]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h0_t2">
+        <PartImage x="312" y="197" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h0_t3"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 49]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h0_t3">
+        <PartImage x="287" y="173" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h0_t4"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 50]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h0_t4">
+        <PartImage x="307" y="149" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h0_t5"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 51]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h0_t5">
+        <PartImage x="327" y="125" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h0_t6"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 52]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h0_t6">
+        <PartImage x="302" y="101" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h0_t7"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 53]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h0_t7">
+        <PartImage x="277" y="78" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h0_t8"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 54]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h0_t8">
+        <PartImage x="297" y="54" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h0_t9"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 55]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h0_t9">
+        <PartImage x="317" y="30" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h0_t10"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 56]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h0_t10">
+        <PartImage x="292" y="6" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h0_t11"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 57]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h0_t11">
+        <PartImage x="267" y="-18" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h0_t12"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 58]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h0_t12">
+        <PartImage x="287" y="-42" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h0_t13"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 59]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h0_t13">
+        <PartImage x="307" y="-66" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h0_t14"><![CDATA[floor([HOUR_0_23]) % 4 == 0 && floor([SECOND]) == 0]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h0_t14">
+        <PartImage x="282" y="-90" width="80" height="80">
+          <Image resource="ghost_3"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h1_t0"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 46]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h1_t0">
+        <PartImage x="313" y="243" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h1_t1"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 47]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h1_t1">
+        <PartImage x="343" y="219" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h1_t2"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 48]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h1_t2">
+        <PartImage x="341" y="194" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h1_t3"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 49]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h1_t3">
+        <PartImage x="313" y="170" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h1_t4"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 50]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h1_t4">
+        <PartImage x="292" y="146" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h1_t5"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 51]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h1_t5">
+        <PartImage x="305" y="121" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h1_t6"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 52]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h1_t6">
+        <PartImage x="339" y="97" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h1_t7"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 53]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h1_t7">
+        <PartImage x="359" y="72" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h1_t8"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 54]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h1_t8">
+        <PartImage x="344" y="48" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h1_t9"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 55]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h1_t9">
+        <PartImage x="313" y="24" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h1_t10"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 56]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h1_t10">
+        <PartImage x="304" y="-1" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h1_t11"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 57]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h1_t11">
+        <PartImage x="330" y="-25" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h1_t12"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 58]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h1_t12">
+        <PartImage x="363" y="-49" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h1_t13"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 59]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h1_t13">
+        <PartImage x="369" y="-74" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h1_t14"><![CDATA[floor([HOUR_0_23]) % 4 == 1 && floor([SECOND]) == 0]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h1_t14">
+        <PartImage x="343" y="-98" width="88" height="88">
+          <Image resource="ghost_0"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h2_t0"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 46]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h2_t0">
+        <PartImage x="319" y="246" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h2_t1"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 47]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h2_t1">
+        <PartImage x="340" y="222" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h2_t2"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 48]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h2_t2">
+        <PartImage x="326" y="199" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h2_t3"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 49]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h2_t3">
+        <PartImage x="297" y="175" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h2_t4"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 50]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h2_t4">
+        <PartImage x="295" y="151" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h2_t5"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 51]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h2_t5">
+        <PartImage x="322" y="127" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h2_t6"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 52]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h2_t6">
+        <PartImage x="333" y="104" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h2_t7"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 53]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h2_t7">
+        <PartImage x="309" y="80" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h2_t8"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 54]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h2_t8">
+        <PartImage x="285" y="56" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h2_t9"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 55]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h2_t9">
+        <PartImage x="296" y="33" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h2_t10"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 56]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h2_t10">
+        <PartImage x="323" y="9" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h2_t11"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 57]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h2_t11">
+        <PartImage x="321" y="-15" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h2_t12"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 58]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h2_t12">
+        <PartImage x="292" y="-39" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h2_t13"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 59]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h2_t13">
+        <PartImage x="278" y="-62" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h2_t14"><![CDATA[floor([HOUR_0_23]) % 4 == 2 && floor([SECOND]) == 0]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h2_t14">
+        <PartImage x="299" y="-86" width="76" height="76">
+          <Image resource="ghost_1"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h3_t0"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 46]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h3_t0">
+        <PartImage x="316" y="244" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h3_t1"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 47]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h3_t1">
+        <PartImage x="343" y="220" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h3_t2"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 48]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h3_t2">
+        <PartImage x="350" y="196" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h3_t3"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 49]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h3_t3">
+        <PartImage x="333" y="172" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h3_t4"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 50]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h3_t4">
+        <PartImage x="306" y="148" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h3_t5"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 51]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h3_t5">
+        <PartImage x="289" y="124" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h3_t6"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 52]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h3_t6">
+        <PartImage x="297" y="100" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h3_t7"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 53]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h3_t7">
+        <PartImage x="323" y="76" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h3_t8"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 54]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h3_t8">
+        <PartImage x="350" y="52" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h3_t9"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 55]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h3_t9">
+        <PartImage x="358" y="28" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h3_t10"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 56]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h3_t10">
+        <PartImage x="341" y="4" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h3_t11"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 57]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h3_t11">
+        <PartImage x="314" y="-20" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h3_t12"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 58]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h3_t12">
+        <PartImage x="297" y="-44" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h3_t13"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 59]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h3_t13">
+        <PartImage x="304" y="-68" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
+    <Condition>
+      <Expressions>
+        <Expression name="ghost_s3_h3_t14"><![CDATA[floor([HOUR_0_23]) % 4 == 3 && floor([SECOND]) == 0]]></Expression>
+      </Expressions>
+      <Compare expression="ghost_s3_h3_t14">
+        <PartImage x="331" y="-92" width="82" height="82">
+          <Image resource="ghost_2"/>
+        </PartImage>
+      </Compare>
+    </Condition>
     <Condition>
       <Expressions>
         <Expression name="moon_new"><![CDATA[[MOON_PHASE_TYPE] == 0]]></Expression>
@@ -259,9 +3218,6 @@
         </PartImage>
       </Compare>
     </Condition>
-    <PartDraw x="0" y="0" width="450" height="450">
-      <RoundRectangle x="232" y="48" width="120" height="68" cornerRadiusX="12" cornerRadiusY="12"><Fill color="#FF14192A"/></RoundRectangle>
-    </PartDraw>
     </Group>
 
     <!-- ComplicationSlots are direct Scene children, declared AFTER all
@@ -292,6 +3248,102 @@
             <PartText x="0" y="0" width="120" height="68">
               <Text align="CENTER" ellipsis="TRUE">
                 <Font family="SYNC_TO_DEVICE" size="30" weight="NORMAL" color="#FF808080">
+                  <Template>%s<Parameter expression="[COMPLICATION.TEXT]"/></Template>
+                </Font>
+              </Text>
+            </PartText>
+          </Compare>
+        </Condition>
+      </Complication>
+    </ComplicationSlot>
+    <ComplicationSlot x="25" y="156" width="120" height="68" slotId="3" displayName="slot_mid1" supportedTypes="SHORT_TEXT EMPTY">
+      <BoundingRoundBox x="0" y="0" width="120" height="68" cornerRadius="12"/>
+      <Complication type="SHORT_TEXT">
+        <Condition>
+          <Expressions>
+            <Expression name="mid3_icon_text"><![CDATA[[COMPLICATION.TEXT] != null && [COMPLICATION.MONOCHROMATIC_IMAGE] != null]]></Expression>
+            <Expression name="mid3_text"><![CDATA[[COMPLICATION.TEXT] != null && [COMPLICATION.MONOCHROMATIC_IMAGE] == null]]></Expression>
+          </Expressions>
+          <Compare expression="mid3_icon_text">
+            <PartText x="0" y="0" width="84" height="68">
+              <Text align="CENTER" ellipsis="TRUE">
+                <Font family="SYNC_TO_DEVICE" size="26" weight="NORMAL" color="#FF808080">
+                  <Template>%s<Parameter expression="[COMPLICATION.TEXT]"/></Template>
+                </Font>
+              </Text>
+            </PartText>
+            <PartImage x="84" y="16" width="36" height="36" tintColor="#FF808080">
+              <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
+            </PartImage>
+          </Compare>
+          <Compare expression="mid3_text">
+            <PartText x="0" y="0" width="120" height="68">
+              <Text align="CENTER" ellipsis="TRUE">
+                <Font family="SYNC_TO_DEVICE" size="26" weight="NORMAL" color="#FF808080">
+                  <Template>%s<Parameter expression="[COMPLICATION.TEXT]"/></Template>
+                </Font>
+              </Text>
+            </PartText>
+          </Compare>
+        </Condition>
+      </Complication>
+    </ComplicationSlot>
+    <ComplicationSlot x="165" y="156" width="120" height="68" slotId="4" displayName="slot_mid2" supportedTypes="SHORT_TEXT EMPTY">
+      <BoundingRoundBox x="0" y="0" width="120" height="68" cornerRadius="12"/>
+      <Complication type="SHORT_TEXT">
+        <Condition>
+          <Expressions>
+            <Expression name="mid4_icon_text"><![CDATA[[COMPLICATION.TEXT] != null && [COMPLICATION.MONOCHROMATIC_IMAGE] != null]]></Expression>
+            <Expression name="mid4_text"><![CDATA[[COMPLICATION.TEXT] != null && [COMPLICATION.MONOCHROMATIC_IMAGE] == null]]></Expression>
+          </Expressions>
+          <Compare expression="mid4_icon_text">
+            <PartText x="0" y="0" width="84" height="68">
+              <Text align="CENTER" ellipsis="TRUE">
+                <Font family="SYNC_TO_DEVICE" size="26" weight="NORMAL" color="#FF808080">
+                  <Template>%s<Parameter expression="[COMPLICATION.TEXT]"/></Template>
+                </Font>
+              </Text>
+            </PartText>
+            <PartImage x="84" y="16" width="36" height="36" tintColor="#FF808080">
+              <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
+            </PartImage>
+          </Compare>
+          <Compare expression="mid4_text">
+            <PartText x="0" y="0" width="120" height="68">
+              <Text align="CENTER" ellipsis="TRUE">
+                <Font family="SYNC_TO_DEVICE" size="26" weight="NORMAL" color="#FF808080">
+                  <Template>%s<Parameter expression="[COMPLICATION.TEXT]"/></Template>
+                </Font>
+              </Text>
+            </PartText>
+          </Compare>
+        </Condition>
+      </Complication>
+    </ComplicationSlot>
+    <ComplicationSlot x="305" y="156" width="120" height="68" slotId="5" displayName="slot_mid3" supportedTypes="SHORT_TEXT EMPTY">
+      <BoundingRoundBox x="0" y="0" width="120" height="68" cornerRadius="12"/>
+      <Complication type="SHORT_TEXT">
+        <Condition>
+          <Expressions>
+            <Expression name="mid5_icon_text"><![CDATA[[COMPLICATION.TEXT] != null && [COMPLICATION.MONOCHROMATIC_IMAGE] != null]]></Expression>
+            <Expression name="mid5_text"><![CDATA[[COMPLICATION.TEXT] != null && [COMPLICATION.MONOCHROMATIC_IMAGE] == null]]></Expression>
+          </Expressions>
+          <Compare expression="mid5_icon_text">
+            <PartText x="0" y="0" width="84" height="68">
+              <Text align="CENTER" ellipsis="TRUE">
+                <Font family="SYNC_TO_DEVICE" size="26" weight="NORMAL" color="#FF808080">
+                  <Template>%s<Parameter expression="[COMPLICATION.TEXT]"/></Template>
+                </Font>
+              </Text>
+            </PartText>
+            <PartImage x="84" y="16" width="36" height="36" tintColor="#FF808080">
+              <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
+            </PartImage>
+          </Compare>
+          <Compare expression="mid5_text">
+            <PartText x="0" y="0" width="120" height="68">
+              <Text align="CENTER" ellipsis="TRUE">
+                <Font family="SYNC_TO_DEVICE" size="26" weight="NORMAL" color="#FF808080">
                   <Template>%s<Parameter expression="[COMPLICATION.TEXT]"/></Template>
                 </Font>
               </Text>

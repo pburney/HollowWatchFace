@@ -4,4 +4,33 @@
 
     <string name="slot_weather">Weather</string>
     <string name="slot_date">Date</string>
+    <string name="slot_mid1">Complication 1</string>
+    <string name="slot_mid2">Complication 2</string>
+    <string name="slot_mid3">Complication 3</string>
+
+    <string name="cfg_bgcolor">Night color</string>
+    <string name="color_red">Red</string>
+    <string name="color_dark_red">Dark Red</string>
+    <string name="color_orange">Orange</string>
+    <string name="color_dark_orange">Dark Orange</string>
+    <string name="color_yellow">Yellow</string>
+    <string name="color_dark_yellow">Dark Yellow</string>
+    <string name="color_green">Green</string>
+    <string name="color_dark_green">Dark Green</string>
+    <string name="color_blue">Blue</string>
+    <string name="color_dark_blue">Dark Blue</string>
+    <string name="color_indigo">Indigo</string>
+    <string name="color_dark_indigo">Dark Indigo</string>
+    <string name="color_violet">Violet</string>
+    <string name="color_dark_violet">Dark Violet</string>
+    <string name="color_brown">Brown</string>
+    <string name="color_dark_brown">Dark Brown</string>
+    <string name="color_grey">Grey</string>
+    <string name="color_grey_dark">Grey Dark</string>
+    <string name="color_midnight">Midnight</string>
+
+    <string name="cfg_bggradient">Night gradient</string>
+    <string name="bggradient_none">None</string>
+    <string name="bggradient_gradient">Gradient</string>
+    <string name="bggradient_dark_rainbow">Dark Rainbow</string>
 </resources>
